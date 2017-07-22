@@ -1,5 +1,5 @@
-### Table Transformation in the Limited-Purpose "Xalgo Form"
-In the XA system there is a requirement for [Repository](https://github.com/Xalgorithms/xa-repository.simple) owners to be able to represent rules in a readable format that can be stored in the [Registry](https://github.com/Xalgorithms/xa-registry). These rules are composed of tables and series of operations on tables. "Xalgo Form" documented in the following sections fulfills the specified *series of operations* component of this thinking. It is intentionally very limited in scope.
+### Table Transformation in the Limited-Purpose "Xalgo"
+In the XA system there is a requirement for [Repository](https://github.com/Xalgorithms/xa-repository.simple) owners to be able to represent rules in a readable format that can be stored in the [Registry](https://github.com/Xalgorithms/xa-registry). These rules are composed of tables and series of operations on tables. "Xalgo" documented in the following sections fulfills the specified *series of operations* component of this thinking. It is intentionally very limited in scope.
 
 Xalgo form itself is *line-oriented*. Each line in a program represents a single, atomic operation on a table or the context in which the program is run. It includes the ability to specific *expectations* and *outputs* of the program. There are two primary data structures involved:
 
