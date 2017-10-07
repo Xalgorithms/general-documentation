@@ -3,9 +3,14 @@
 This document describes the fundamental architecture of the **XA Data
 Fabic** platform (XAF). It is the fundamental data processing system
 for XA, Lichen and related applications. It is a container-based,
-cloud-native system built on Apache Kafka and Spark. The computational
-model of the system is derived from message-based designs and CQRS,
-with inspiration from AWS Lambdas.
+cloud-native system built on [Apache
+Kafka](https://en.wikipedia.org/wiki/Apache_Kafka) and
+[Spark](https://en.wikipedia.org/wiki/Apache_Spark). The computational
+model of the system is derived from [message-based
+designs](https://en.wikipedia.org/wiki/Message-oriented_middleware)
+and [CQRS](https://en.wikipedia.org/wiki/Command–query_separation),
+with inspiration from [AWS
+Lambdas](https://en.wikipedia.org/wiki/AWS_Lambda).
 
 # Architecture
 
@@ -17,15 +22,16 @@ Operations.
 ## Storage
 
 The foundation of the architecture is built from Apache Spark on top
-of Apache HBASE. This yields a solid, distributed storage system
-accessed via a distributed map/reduce system. All XA data (rules,
-tables, documents etc) are retained in this layer. Services and
-Functions (detailed later) will access data from the HBASE cluster via
-the map/reduce component (Spark). Direct access to *some data* that is
-*operational* in nature may be provided by direct access to the
-storage (rather than map/reduce) if map/reduce proves to be too
-cumbersome for potentially simple data access (for example, retrieving
-a list of rules for display in a UI).
+of [Apache HBASE](https://en.wikipedia.org/wiki/Apache_HBase). This
+yields a solid, distributed storage system accessed via a distributed
+map/reduce system. All XA data (rules, tables, documents etc) are
+retained in this layer. Services and Functions (detailed later) will
+access data from the HBASE cluster via the map/reduce component
+(Spark). Direct access to *some data* that is *operational* in nature
+may be provided by direct access to the storage (rather than
+map/reduce) if map/reduce proves to be too cumbersome for potentially
+simple data access (for example, retrieving a list of rules for
+display in a UI).
 
 By design, the Storage Layer will be deployed and managed
 *independantly* of the other Layers in the architecture. This will
@@ -41,15 +47,17 @@ testing and improve development to deployment turn-around time.
 This layer is built on two primitive concepts: Tasks and Functions.
 
 Functions are arrayed in a cluster of containers (Docker) that provide
-**very simple* micro-services that are inspired by AWS
-Lambdas. Functions represent single operations from the Rule
-Expressions (Xalgo 2.0) or inbound handlers of Tasks. They are
-designed to be purely functional (the same inputs yield the same
-outputs in subsequent invocations). Since they are implemented as
-contained micro-services, Functions can be started and stopped
-automatically by the clustering system to meet the demands of
-scale. Functions receive their input and place their output on Task
-queues.
+*very simple*
+[micro-services](https://en.wikipedia.org/wiki/Microservices) that are
+inspired by AWS Lambdas and [serverless computing
+concepts](https://en.wikipedia.org/wiki/Serverless_computing). Functions
+represent single operations from the Rule Expressions (Xalgo 2.0) or
+inbound handlers of Tasks. They are designed to be purely functional
+(the same inputs yield the same outputs in subsequent
+invocations). Since they are implemented as contained micro-services,
+Functions can be started and stopped automatically by the clustering
+system to meet the demands of scale. Functions receive their input and
+place their output on Task queues.
 
 Tasks represent solitary compute requests for the Function cluster
 (discover rules for a document, lookup data from a table, etc). They
@@ -82,17 +90,21 @@ in the Storage Layer.
 # Deployment
 
 *This section is still a work in progress. All aspects have been
-considered, but some further investigation of Apache Mesos is required
-to solidify the technology that will support it.*
+considered, but some further investigation of [Apache
+Mesos](https://en.wikipedia.org/wiki/Apache_Mesos) is required to
+solidify the technology that will support it.*
 
 Currently, it is expected that the Fabric will be deployed using
-Docker containers managed with Docker Compose / Kubernetes using
-Rancher 2.0 as the management system. It will be deployed in three
-independant *compositions* representing the three layers described
-earlier in this document. This compositions will run on independant
-cloud infrastructures in order to correctly manage the different
-scaling requirements of each (Compute is on-demand, but Storage and
-Operations are generally scaled on initial deployment).
+[Docker](https://en.wikipedia.org/wiki/Docker_(software)) containers
+managed with Docker Compose /
+[Kubernetes](https://en.wikipedia.org/wiki/Kubernetes) using [Rancher
+2.0](https://rancher.com/rancher2-0/) as the management system. It
+will be deployed in three independant *compositions* representing the
+three layers described earlier in this document. This compositions
+will run on independant cloud infrastructures in order to correctly
+manage the different scaling requirements of each (Compute is
+on-demand, but Storage and Operations are generally scaled on initial
+deployment).
 
 # Example Lichen Usage
 
