@@ -46,7 +46,7 @@ testing and improve development to deployment turn-around time.
 
 This layer is built on two primitive concepts: Tasks and Functions.
 
-Functions are arrayed in a cluster of containers (Docker) that provide
+Functions are arrayed in a cluster of containers ([Docker](https://en.wikipedia.org/wiki/Docker_(software))) that provide
 *very simple*
 [micro-services](https://en.wikipedia.org/wiki/Microservices) that are
 inspired by AWS Lambdas and [serverless computing
