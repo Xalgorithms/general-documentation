@@ -17,7 +17,7 @@ Lambdas](https://en.wikipedia.org/wiki/AWS_Lambda).
 The architecture is arrayed in three layers: Storage, Compute and
 Operations.
 
-![Architecture](lichen-arch-2.0-sketch.jpg)
+![Architecture](xa.data.fabric.png)
 
 ## Storage
 
