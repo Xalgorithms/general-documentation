@@ -71,10 +71,10 @@ This layer provides the public API access to the Task layer in order
 to schedule computations, to receive results and to query for
 information from the system.
 
-All requests for the system enter via the Command Service as
-Commands. These Commands are *pseudo-transactional* in that **no**
-results appear until all internal elements of the Command are
-satisfied. Examples of Commands: submitting a document for processing,
+All requests for the system enter via the Schedule Service as
+Tasks. These Commands are *pseudo-transactional* in that **no**
+results appear until all internal elements of the Tasks are
+satisfied. Examples of Tasks: submitting a document for processing,
 adding or updating a Rule, etc.
 
 External applications may register to receive events related to
@@ -106,6 +106,12 @@ manage the different scaling requirements of each (Compute is
 on-demand, but Storage and Operations are generally scaled on initial
 deployment).
 
+# Access
+
+![Applications](xa.data.fabric.apps.png)
+
+Applications (Lichen, Authoring) access the Fabric via the Operations Layer. To submit processing requests, the application would use the public API of the Schedule service. To receive results, when they eventually become available, the application would request a listening Web Socket connection from the Respond service and begin to listen on that connection. To make simple queries about the Fabric, the public REST API of the Query service would be used.
+
 # Example Lichen Usage
 
 This section describes how the classic Lichen rule processing request
@@ -113,7 +119,7 @@ would be handled by the Fabric.
 
 1. A document (this is an *internal* processable document derived from
    the UBL document that Lichen received) would be delivered to the
-   Fabric via the Commands Service. This would enqueue a Task in the
+   Fabric via the Schedule service. This would enqueue a Task in the
    Compute layer.
 
 2. A Function would be instantiated (or reused if already live and
