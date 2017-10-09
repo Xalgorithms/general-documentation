@@ -3,7 +3,8 @@
 This document describes the fundamental architecture of the **XA Data
 Fabric** platform (XAF). It is the fundamental data processing system
 for XA, Lichen and related applications. It is a container-based,
-cloud-native system built on [Apache
+[cloud-native](https://www.cncf.io/about/faq/)
+system built on [Apache
 Kafka](https://en.wikipedia.org/wiki/Apache_Kafka) and
 [Spark](https://en.wikipedia.org/wiki/Apache_Spark). The computational
 model of the system is derived from [message-based
@@ -110,7 +111,13 @@ deployment).
 
 ![Applications](xa.data.fabric.apps.png)
 
-Applications (Lichen, Authoring) access the Fabric via the Operations Layer. To submit processing requests, the application would use the public API of the Schedule service. To receive results, when they eventually become available, the application would request a listening Web Socket connection from the Respond service and begin to listen on that connection. To make simple queries about the Fabric, the public REST API of the Query service would be used.
+Applications (Lichen, Authoring) access the Fabric via the Operations
+Layer. To submit processing requests, the application would use the
+public API of the Schedule service. To receive results, when they
+eventually become available, the application would request a listening
+Web Socket connection from the Respond service and begin to listen on
+that connection. To make simple queries about the Fabric, the public
+REST API of the Query service would be used.
 
 # Example Lichen Usage
 
@@ -119,7 +126,7 @@ would be handled by the Fabric.
 
 1. A document (this is an *internal* processable document derived from
    the UBL document that Lichen received) would be delivered to the
-   Fabric via the Schedule service. This would enqueue a Task in the
+   Fabric via the Schedule service. This would queue a Task in the
    Compute layer.
 
 2. A Function would be instantiated (or reused if already live and
