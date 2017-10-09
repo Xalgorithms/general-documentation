@@ -1,7 +1,7 @@
 # Summary
 
 This document describes the fundamental architecture of the **XA Data
-Fabic** platform (XAF). It is the fundamental data processing system
+Fabric** platform (XAF). It is the fundamental data processing system
 for XA, Lichen and related applications. It is a container-based,
 cloud-native system built on [Apache
 Kafka](https://en.wikipedia.org/wiki/Apache_Kafka) and
