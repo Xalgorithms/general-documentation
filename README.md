@@ -46,39 +46,39 @@ In order to make the Lichen component readily adaptable to any deployment enviro
 
 HOW TO CONTRIBUTE (SOURCE CODE, SYSTEMS MANAGEMENT)
 
-All Xalgorithms source code and technical documentation is [maintained on Github](/Xalgorithms). In the future components may also be mirrored on [Bitbucket](https://bitbucket.org/)... but we've not done this yet.
+For collaboration the Xalgorithms team regularly uses:
+* Github for code and task management: https://github.com/Xalgorithms. In the future components may also be mirrored on [Bitbucket](https://bitbucket.org/)... but we've not done this yet.
+* Jupyter (via https://datascientistworkbench.com/) to document and test each algorithm's executable code and results
+* Markdown (Jupyter variant) http://datascience.ibm.com/blog/markdown-for-jupyter-notebooks-cheatsheet/  https://tools.ietf.org/html/rfc7764
+* Apache Spark, Mesos, Assak, Cassandra, Kafka, OpenWhisk https://gist.github.com/Arnauld/b98f41b7a245c859be34f6efa9627513 on AWS
+* Tradeshift for UBL-conformant invoice testing https://tradeshift.com/roles/sb/small-business-free-invoicing/
+* Slack for ad hoc communications: https://xalgo-lichen.slack.com/messages/ 
+* Etherpad for ad hoc co-drafting: e.g. https://etherpad.wikimedia.org
+* GoogleDocs for structured co-drafting: (default rendering in OpenDocument, e.g. ODT, ODP)
+* GoogleHangouts for calls
+* Xalgorithms.org for use cases: https://xalgorithms.org/#root=extended-capabilities
+* Twitter @xalgorithms (140+ followers); @xalgo4trade (360+ followers)
 
-Participation in technical work of Xalgorithms Alliance is by free/libre/open source licensing (in order to state terms and conditions for the distribution and use of works, respecting intellectual rights title) and by contract (in order to state intellectual rights title). The contract may either be [explicit](https://www.xalgorithms.org/about-us/membership/) through the "XALGORITHMS ALLIANCE ACCESSION AGREEMENT" or [implied in fact](https://www.law.cornell.edu/wex/contract_implied_in_fact)  Participating under an implied contract shall always be assumed as carrying the same terms as the XALGORITHMS ALLIANCE ACCESSION AGREEMENT.
+Participation in technical work of Xalgorithms Alliance is by free/libre/open source licensing (in order to state terms and conditions for the distribution and use of works, respecting intellectual rights title) and by contract (in order to clearly state intellectual rights title). The contract may either be [explicit](https://www.xalgorithms.org/about-us/membership/) through the "XALGORITHMS ALLIANCE ACCESSION AGREEMENT" or [implied in fact](https://www.law.cornell.edu/wex/contract_implied_in_fact)  Participating under an implied contract shall always be assumed as carrying the same terms as the XALGORITHMS ALLIANCE ACCESSION AGREEMENT.
 
 HOW TO CONTRIBUTE (BUSINESS MANAGEMENT, GOVERNANCE)
 
 Participation in business management and governance of Xalgorithms Alliance is structured through an explict contract with Xalgorithms Foundation, namely the [XALGORITHMS ALLIANCE ACCESSION AGREEMENT](https://www.xalgorithms.org/about-us/membership/) 
-Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorportated in Canada. The sole purpose of the Foundation is to provide management and governance services to the Xalgorithms Alliance. And Xalgorithms Alliance exists as an unincorporated association of members committed to fostering a free/libre/open Internet of Rules to advance the fairness and efficiency of commerce.  
+Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorporated in Canada. The sole purpose of the Foundation is to provide management and governance services to the Xalgorithms Alliance. And Xalgorithms Alliance exists as an unincorporated association of members committed to fostering a free/libre/open Internet of Rules to advance the fairness and efficiency of commerce.  
 
 HOW TO CONTRIBUTE (FINANCIALLY)
 
-Xalgorithms Foundation offers [five categories of membership in Xalgorithms Alliance](https://www.xalgorithms.org/about-us/membership/)
+Xalgorithms Foundation offers [five categories of membership in Xalgorithms Alliance](https://xalgorithms.org/participate/)
 
 PROJECT MANAGEMENT
 
-Xalgorithms is managed on [an instance of OpenProject](https://worksite.xalgorithms.org)
-
-The two primary sub-projects are located at:
-[https://worksite.xalgorithms.org/projects/registry-of-rules](https://worksite.xalgorithms.org/projects/registry-of-rules)
-[https://worksite.xalgorithms.org/projects/lichen](https://worksite.xalgorithms.org/projects/registry-of-rules)
+Business aspects of Xalgorithms are managed on [an instance of OpenProject](https://worksite.xalgorithms.org)
 
 [Request an Account](https://worksite.xalgorithms.org/account/register)
 
-SOURCE CODE MANAGEMENT & DISTRIBUTION
-
-Xalgorithms uses Github for source code, located at:
-https://github.com/Xalgorithms
-
-[Create your Github Account](https://github.com/join?)
-
 CODING STANDARDS
 
-[Under development...]
+[Under revision...]
 
 Representational State Transfer (REST) Architectural Style 
 http://www.restapitutorial.com/
@@ -111,5 +111,5 @@ Potvin and Olders [incorporated Xalgorithms Foundation Inc. on 4 December 2015](
 
 Xalgorithms Foundation was provide start-up financial backing from DataKinetics, in the form of a 5-year [Tier 3 Membership](Membership structure is describe in detail at: https://www.xalgorithms.org/about-us/membership/)
 
-The original technical team working under contract in 2015 and 2016 has been comprised of Don Kelly, Patrick Naubert, Simon Deziel, Michael Richardson and Samir Hussain. 
+The current technical team is led by Don Kelly and Bill Olders, also with requirements specification led by Joseph Potvin. Developers Hayk Pilosyan (full time) and Sr. Systems Developer Tigran Sargsyanand (part time) are creating the production-class system. The early proof-of-concept implementation in 2015 and 2016 was mainly done by Don Kelly with input from Patrick Naubert, Simon Deziel, Michael Richardson and Samir Hussain. 
 
