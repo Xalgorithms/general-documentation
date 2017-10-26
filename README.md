@@ -48,9 +48,10 @@ HOW TO CONTRIBUTE (SOURCE CODE, SYSTEMS MANAGEMENT)
 
 For collaboration the Xalgorithms team regularly uses:
 * Github for code and task management: https://github.com/Xalgorithms. In the future components may also be mirrored on [Bitbucket](https://bitbucket.org/)... but we've not done this yet.
-* Jupyter (via https://datascientistworkbench.com/) to document and test each algorithm's executable code and results
+* Jupyter (via https://datascientistworkbench.com/) to document and test each algorithm's executable code and results 
 * Markdown (Jupyter variant) http://datascience.ibm.com/blog/markdown-for-jupyter-notebooks-cheatsheet/  https://tools.ietf.org/html/rfc7764 with Pandas Dataframes https://pandas.pydata.org/pandas-docs/stable/dsintro.html
 * Apache Spark, Mesos, Assak, Cassandra, Kafka, OpenWhisk https://gist.github.com/Arnauld/b98f41b7a245c859be34f6efa9627513 on AWS
+* Universal business language (UBL) INVOICE and ORDER http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#T-INVOICE  http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#T-ORDER
 * Tradeshift for UBL-conformant invoice testing https://tradeshift.com/roles/sb/small-business-free-invoicing/
 * Slack for ad hoc communications: https://xalgo-lichen.slack.com/messages/ 
 * Etherpad for ad hoc co-drafting: e.g. https://etherpad.wikimedia.org
