@@ -127,28 +127,42 @@ would be handled by the Fabric.
 1. A document (this is an *internal* processable document derived from
    the UBL document that Lichen received) would be delivered to the
    Fabric via the Schedule service. This would queue a Task in the
-   Compute layer.
+   Compute layer. The task is queued as a message on a Kafka topic
+   (name: xadf.compute.documents). The message body contains the
+   document id from Cassandra.
 
 2. A Function would be instantiated (or reused if already live and
    idle) to process the Task from (1). Using Spark map/reduce, an
    ordered stream of relevant Rules would be generated and combined
-   with the document to create a new stream of Tasks.
+   with the document to create a new stream of Tasks. Each of these is
+   added as a message to a Kafka topic (name:
+   xadf.compute.applications). The message body contains the rule and
+   document ids from Cassandra.
    
 3. Functions would be triggered from the Task stream generated in (2),
    each would process a single Rule application across the associated
    document. This would generate a stream of rules and items from the
-   document that would produce a new stream of Tasks.
+   document that would produce a new stream of Tasks. Each of these is
+   added as a message to a Kafka topic (name: xadf.compute.items). The
+   message body contains the **full item content in JSON** and rule
+   id.
    
 4. As in (3), Functions would be triggered to handle each rule and
    item combination. This effectively applies the Rule to an atomic
    item in the document. Out of this application, a stream of result
-   Tasks would be created.
+   Tasks would be created. These are queued in a Kafka topic (name:
+   xadf.result.items). The message body contains the **computed item
+   data in JSON** and the rule id.
    
 5. A Function would be triggered from the item result stream to
-   reassemble the document based on the results from (4). Spark
-   map/reduce would be used to perform this reassembly, storing the
-   resulting revision in the permanent storge. Ultimately, a results
-   Task would be queued.
+   reassemble the document based on the results from (4). This
+   generates a new version of the document that **must be** stored as
+   a new document in Cassandra. Spark map/reduce would be used to
+   perform this reassembly, storing the resulting revision in
+   Cassandra. Ultimately, a results Task would be queued. This results
+   task is queue to a Kafka topic (name: xadf.results.documents). The
+   message body should contain the list of applied rule ids and the
+   new document id.
    
 6. The Events Service would signal the listening Lichen application
    based on the results Task using the Web Socket connection.
