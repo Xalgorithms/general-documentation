@@ -139,30 +139,26 @@ would be handled by the Fabric.
    xadf.compute.applications). The message body contains the rule and
    document ids from Cassandra.
    
-3. Functions would be triggered from the Task stream generated in (2),
-   each would process a single Rule application across the associated
-   document. This would generate a stream of rules and items from the
-   document that would produce a new stream of Tasks. Each of these is
-   added as a message to a Kafka topic (name: xadf.compute.items). The
-   message body contains the **full item content in JSON** and rule
-   id.
+3. Functions would be triggered to handle each rule and item
+   combination queued in (3). This effectively applies the Rule to all
+   items in the document as a single transaction. Out of this
+   application, a stream of result Tasks would be created. These are
+   queued in a Kafka topic (name: xadf.results.items). The message
+   body contains the **computed item table in JSON** (the result of
+   applying the rule to the table of items in the document) and the
+   rule id.
    
-4. As in (3), Functions would be triggered to handle each rule and
-   item combination. This effectively applies the Rule to an atomic
-   item in the document. Out of this application, a stream of result
-   Tasks would be created. These are queued in a Kafka topic (name:
-   xadf.result.items). The message body contains the **computed item
-   data in JSON** and the rule id.
-   
-5. A Function would be triggered from the item result stream to
-   reassemble the document based on the results from (4). This
-   generates a new version of the document that **must be** stored as
-   a new document in Cassandra. Spark map/reduce would be used to
+4. A Function would be triggered from the item result stream to
+   reassemble the document based on the results from (3). This
+   generates a *revision* of the document that **must be** stored as a
+   new revision row in Cassandra. Spark map/reduce would be used to
    perform this reassembly, storing the resulting revision in
    Cassandra. Ultimately, a results Task would be queued. This results
    task is queue to a Kafka topic (name: xadf.results.documents). The
    message body should contain the list of applied rule ids and the
-   new document id.
+   new revision id and the original document id. Clients can use the
+   query service to request a version of the document with this
+   revision applied.
    
-6. The Events Service would signal the listening Lichen application
+5. The Events Service would signal the listening Lichen application
    based on the results Task using the Web Socket connection.
