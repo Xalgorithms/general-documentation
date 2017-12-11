@@ -129,7 +129,7 @@ made knowing only the id. The scheme breaks down as:
   
 ### Rule Version
 
-The rule version should follow (SemVer)[http://semver.org].
+The rule version should follow [SemVer](http://semver.org).
 
 ### Effective times
 
@@ -137,8 +137,8 @@ The effective times section of the component meta information
 indicates a time period when the component is valid for use. Outside
 of this period, the rule **will not** be applied to documents. These
 times are expressed in **local time** with an attached time zone
-(using a common abbreviation or the (IANA tz
-database)[https://www.iana.org/time-zones] specifier). Since a
+(using a common abbreviation or the [IANA tz
+database](https://www.iana.org/time-zones) specifier). Since a
 juridiction may include *multiple* time zones, this field allows
 specifying multiple effective dates.
 
