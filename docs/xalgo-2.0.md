@@ -242,3 +242,10 @@ Generally, the statements in an XALGO rule fall into specific categories:
 
 - *revision*: These are explicit statements about with computed data
   should be output into the new document revision.
+
+# Storage
+
+The full content of rules and tables are stored in the XADF document
+database. Information related to rule matching and inference is stored
+in Cassandra. Further details about this and the matching logic are
+avilable in [data storage](data.storage.md).
