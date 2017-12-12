@@ -248,4 +248,4 @@ Generally, the statements in an XALGO rule fall into specific categories:
 The full content of rules and tables are stored in the XADF document
 database. Information related to rule matching and inference is stored
 in Cassandra. Further details about this and the matching logic are
-avilable in [data storage](data.storage.md).
+available in [data storage](data.storage.md).
