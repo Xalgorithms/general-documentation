@@ -126,10 +126,16 @@ made knowing only the id. The scheme breaks down as:
 - [2-6]: Any valid ASCII character except space available on an
   ISO/IEC 9995 keyboard. Typically, this should be an abbreviated form
   of the component name derived from the file name.
-  
+
+*This identifier is optional*. If not present it will be added by the
+authoring system described below. The six characters will be derived
+from the name of the notebook.
+
 ### Rule Version
 
-The rule version should follow [SemVer](http://semver.org).
+The rule version should follow [SemVer](http://semver.org). *This
+value is optional*. If it is not present, it will be derived from the
+release tag.
 
 ### Effective times
 
@@ -276,3 +282,6 @@ versioning, selection of effective dates, selection of jurisdictions
 and assignment of roles. The roles themselves will be associated with
 users from the original JupyterHub instance.
 
+# Publishing
+
+TBD
