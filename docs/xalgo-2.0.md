@@ -249,3 +249,30 @@ The full content of rules and tables are stored in the XADF document
 database. Information related to rule matching and inference is stored
 in Cassandra. Further details about this and the matching logic are
 available in [data storage](data.storage.md).
+
+# Authoring with Jupyter
+
+Rules and tables (as rule packages) are edited in [Jupyter
+notebooks](http://jupyter.org/) alongside informational documentation
+about the rule package. A single Jupyter notebook represents an entire
+rule package. To support this relationship, we will add kernels and UI
+to the core Jupyter project and host an instance of the system
+alongside the XADF. This will be built on
+(JupyterHub)[https://jupyterhub.readthedocs.io/en/latest/]. Notebooks
+created in this instance will be persisted to GitHub repositories as
+rule packages (described above).
+
+When creating a notebook using the project's instance of JupyterHub,
+the notebook will be required contain a reference to a GitHub
+repository. When the notebook is saved, it will be committed (or
+updated) in the root of the repository. A directory with the same name
+as the notebook will also be created. This directory will contain the
+rule package that is associated with the notebook. Any rules or tables
+that are created within the UI of the notebook will be persisted in
+this directory and **merely referenced** from within the
+notebook. Based on information captured using UI extensions, the
+packaging data will also be updated in the rule package. This includes
+versioning, selection of effective dates, selection of jurisdictions
+and assignment of roles. The roles themselves will be associated with
+users from the original JupyterHub instance.
+
