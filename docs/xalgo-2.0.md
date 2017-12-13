@@ -258,6 +258,8 @@ available in [data storage](data.storage.md).
 
 # Authoring with Jupyter
 
+## Structure
+
 Rules and tables (as rule packages) are edited in [Jupyter
 notebooks](http://jupyter.org/) alongside informational documentation
 about the rule package. A single Jupyter notebook represents an entire
@@ -269,7 +271,7 @@ created in this instance will be persisted to GitHub repositories as
 rule packages (described above).
 
 When creating a notebook using the project's instance of JupyterHub,
-the notebook will be required contain a reference to a GitHub
+the notebook will be required to contain a reference to a GitHub
 repository. When the notebook is saved, it will be committed (or
 updated) in the root of the repository. A directory with the same name
 as the notebook will also be created. This directory will contain the
@@ -282,6 +284,25 @@ versioning, selection of effective dates, selection of jurisdictions
 and assignment of roles. The roles themselves will be associated with
 users from the original JupyterHub instance.
 
-# Publishing
+## Publishing
 
-TBD
+When using JupyterHub notebooks, users will be able to publish
+versions of the notebook and the associated rules. Tags in GitHub will
+be used to support this functionality. When a user indicates a new
+version, a tag will automatically be created in GitHub to mark the
+version. This versioning will be **permanent**. To make changes
+**after a version has been published**, the user will have to publish
+a **new** version. UI elements will be added to the JupyterHub
+instance to support versions.
+
+If a user would like to test their rules, the XADF will provide a
+*sandbox environment* on the Fabric. This will allow the user to run
+their rules against simple input documents. To isolate the changes
+that the user is testing in their sandbox, GitHub branches will be
+used to isolate the changes they have made to their notebook and
+associated rules or tables. When the user is happy with their changes,
+they will be able to merge the sandbox into the master branch of the
+GitHub repository **as a new version**. As with versions, additional
+UI will be added to the JupyterHub application.
+
+
