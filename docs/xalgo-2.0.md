@@ -54,7 +54,7 @@ The package file follows this format:
       // these require UTC offsets (see effective section)
       "effective" : [
         // timezone: tz style or abbrev
-        { "timezone", "AST", "starts" : "2007-04-05T12:30", "ends" : "2008-04-05T12:30" }
+        { "timezone": "AST", "starts" : "2007-04-05T12:30", "ends" : "2008-04-05T12:30" }
       ],
       "jurisdiction" : {
         // ISO 3166-1 (alpha2, alpha3 or numeric)
