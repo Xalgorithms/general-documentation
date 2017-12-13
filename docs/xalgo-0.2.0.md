@@ -1,6 +1,6 @@
 # Summary
 
-This document explains the format of rules in XALGO 2.0. It includes
+This document explains the format of rules in XALGO 0.2.0. It includes
 the textual representation of the rule as well as the prescribed
 layout of rules as stored in Git repositories. Included with this
 explanation is a high-level explanation of rule storage in the XADF.
