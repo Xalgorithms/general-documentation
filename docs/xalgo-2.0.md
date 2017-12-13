@@ -306,3 +306,4 @@ GitHub repository **as a new version**. As with versions, additional
 UI will be added to the JupyterHub application.
 
 
+# Syntax
