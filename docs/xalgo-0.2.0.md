@@ -124,12 +124,12 @@ made knowing only the id. The scheme breaks down as:
   category for the component.
   
 - [2-6]: Any valid ASCII character except space available on an
-  ISO/IEC 9995 keyboard. Typically, this should be an abbreviated form
-  of the component name derived from the file name.
+  ISO/IEC 9995 keyboard. Optionally, this can be an abbreviated form
+  of the component name derived from the file name, unless the string is already in use.
 
 *This identifier is optional*. If not present it will be added by the
 authoring system described below. The six characters will be derived
-from the name of the notebook.
+from the name of the notebook, unless the resulting string is already in use.
 
 ### Rule Version
 
@@ -182,9 +182,9 @@ The meta information specifies three roles:
   generated when the rule is updated.
 
 
-## XALGO 2.0 Expressions
+## XALGO 0.2.0 Expressions
 
-Rules are represented using the syntax of the XALGO 2.0 expression
+Rules are represented using the syntax of the XALGO 0.2.0 expression
 language. This is so that there is an easily readable version of the
 rule's logic retained somewhere in the system. It is this format that
 should be committed to the rule package git repository. Other tools
