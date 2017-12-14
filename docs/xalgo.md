@@ -284,26 +284,65 @@ versioning, selection of effective dates, selection of jurisdictions
 and assignment of roles. The roles themselves will be associated with
 users from the original JupyterHub instance.
 
-## Publishing
+## Authoring and Publishing
 
-When using JupyterHub notebooks, users will be able to publish
-versions of the notebook and the associated rules. Tags in GitHub will
-be used to support this functionality. When a user indicates a new
-version, a tag will automatically be created in GitHub to mark the
-version. This versioning will be **permanent**. To make changes
-**after a version has been published**, the user will have to publish
-a **new** version. UI elements will be added to the JupyterHub
-instance to support versions.
+Any user of the XA Authoring environment based on JupyterHub will be
+automatically allocated a *sandbox* for editing the notebook, tables
+and rules. This environment will be preserved as a specially named
+*branch* in GitHub. As the author makes changes to the package or its
+contents, changes will be *comitted* to their sandbox branch. The
+package on such a branch can be deployed to a *sandbox* within the
+Fabric (see Execution) with the same name as the author's snadbox
+branch. When they want to *publish* these changes to the *official*
+version of the package, the branch will be *merged* into the *master*
+branch of the repo and a new version tag (this is the version of the
+**entire repository**) will be created. This publication will trigger
+a *rebuild* of the package within the Fabric.
+
+In addition to the master branch of the repo, there will exist a
+*development* branch that an author can optionally select as a target
+for their changes. This is a fully functional edition of the rule
+package running *live* on the Fabric with precisely the same
+capabilities as a *production* version published on the *master*
+branch. The *development* branch has some differences from the
+*master* (or *production*) branch:
+
+- incoming documents must be *specifically targeted* to run using
+  rules from the branch
+
+- references to tables within a rule in the package will automatically
+  use the *development* version of the referenced table even if there
+  is a production version of the table with the same version
+
+# Rules on the Fabric
+
+## Deployment
+
+As described above, Rule packages are deployed to the Fabric when a
+merge occurs on the *master* branch of the repository. The deployment
+steps are:
+
+1. *Revisions Service* detects a merge and pulls the branch from
+   GitHub
+
+1. For all rules or tables in the package that have updated versions,
+   new versions are added to the document database; any package-level
+   data is updated
+   
+1. The job processing tables in Cassandra are updated
+
+As soon as this deployment is completed, incoming documents will be
+processed using the latest versions of the rules.
+
+## Sandboxes
 
 If a user would like to test their rules, the XADF will provide a
 *sandbox environment* on the Fabric. This will allow the user to run
 their rules against simple input documents. To isolate the changes
 that the user is testing in their sandbox, GitHub branches will be
-used to isolate the changes they have made to their notebook and
-associated rules or tables. When the user is happy with their changes,
-they will be able to merge the sandbox into the master branch of the
-GitHub repository **as a new version**. As with versions, additional
-UI will be added to the JupyterHub application.
-
+used. When the user is happy with their changes, they will be able to
+merge the sandbox into the master branch of the GitHub repository **as
+a new version**. As with versions, additional UI will be added to the
+JupyterHub application.
 
 # Syntax
