@@ -42,6 +42,7 @@ Cassandra. This table has these columns:
 * *timezone*: An IANA tz identifier
 * *starts*: A date and time in *local time* indicating when the rule takes effect
 * *ends*: A date and time in *local time* indicating when the rule ceases to take effect
+* *party*: One of "supplier", "customer", "payee", "buyer", "seller", "tax" or "any"
 
 ## Applicable rules
 
