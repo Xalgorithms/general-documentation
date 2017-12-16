@@ -342,7 +342,77 @@ their rules against simple input documents. To isolate the changes
 that the user is testing in their sandbox, GitHub branches will be
 used. When the user is happy with their changes, they will be able to
 merge the sandbox into the master branch of the GitHub repository **as
-a new version**. As with versions, additional UI will be added to the
-JupyterHub application.
+a new version**.
+
+An author's *default sandbox* branch can always be deployed to the
+Fabric for testing in this manner. The sandbox on the Fabric will
+automatically have the same name.
+
+Additional UI will be added to JupyterHub to support selecting and
+deploying sandboxes.
+
+## Targeted Execution
+
+When documents are submitted to the [Schedule Service](./arch-2.0.md),
+they are processed by rules that have been published as
+*production*. In order to properly use the sandboxes described
+previously, rule authors will be able to target *development* or
+*sandbox* branches. When targeting sandbox branches, they will also be
+able to bypass the rule filtering aspects of the pipeline by
+specifying the *precise* rule that they would like to execute.
+
+## Telemetry
+
+To assist in debugging and development, all aspects of processing on the Fabric will be available to roles specified in a rule package. This will incude:
+
+- when and why a rule was marked as *effective* or *applicable*
+
+- the full execution context for any execution of the rule, at every
+  step of the rule
+
+- the revisions made to a document (some redaction may be required)
 
 # Syntax
+
+This section documents the syntac of the textual representation of the
+rule language. It is broken into sections that correspond to the
+*phases* of the rule's execution (see [pipline](./pipeline.md) for
+more details.
+
+## Conditions of execution
+
+### Common elements
+
+- *section*:
+- *name*:
+- *key*:
+- *operator*:
+- *value*:
+
+### WHEN
+
+```WHEN <section>:<key> <operator> <value>;```
+
+The *WHEN* statement is used to specify the conditions that will
+indicate applicability of the rule to a document *or* an item in the
+body of the document. This information is used to indicate that
+documents would effectively not generate revisions of the document.
+
+
+### REQUIRE
+
+## Assembling in-memory tables
+
+### ASSEMBLE
+
+```ASSEMBLE <name> (COLUMN <name> FROM <name> WHEN <reference> <operator> <reference>)+```
+
+## Map/Reduce
+
+### MAP
+
+### REDUCE
+
+## Revisions
+
+### REVISE
