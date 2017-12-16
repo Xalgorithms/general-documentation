@@ -117,15 +117,31 @@ made knowing only the id. The scheme is structured as follows:
 
 - [0]: The first character in the id denotes the type of entity. It
   can be either S, R or T (signifying System, Rule or Table)
-
-- [1]: One of (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q). This refers to the
-  [ISIC
-  Rev.3](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
-  category for the component.
   
-- [2-6]: Any valid ASCII character except space available on an
+- [1]: The second character in the id MAY be populated with the ASCII
+  character § to indicate that one or more subsequent characters is carrying
+  semantic meaning from a globally-standardized ontology. When these positions
+  re used they can contain any valid ASCII character except space available 
+  on an ISO/IEC 9995 keyboard. The mandatory   sequential order of ontologies will be assigned 
+  through an (as yet   underdeveloped) IoR governance process, from left to right. Use of two §§
+  in a row signifies that the next designated ontology is not relevant. Use of the addition 
+  sign with a number §+3§ indicates that the next three designated ontologies 
+  are not relevant. Use of Ø indicates that the Rule ID character string will include no further use
+  of the designated ontologies. But after the Ø any rule author or group of authors may 
+  apply their own semantic coding structure or semantic text summaries. 
+
+- [2..]: The first globally-standardized ontology is the International Standard 
+  Industrial Classification [ISIC Rev.3] (https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
+  A letter (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q) refers to a category for the component.
+  If a rule is deemed relevant to more than one category, then two or more letters may be 
+  indluded in the Rule ID string, before § or Ø appear.
+  
+- [3..]: These next locations in a Rule Id may be used for references to globally-
+  standardized ontologies. 
+
+- [22-46]: Any valid ASCII character except space available on an
   ISO/IEC 9995 keyboard. Optionally, this can be an abbreviated form
-  of the component name derived from the file name, unless the string is already in use.
+  of the rule name derived from the file name, unless the string is already in use.
 
 *This identifier is optional*. If not present it will be added by the
 authoring system described below. The six characters will be derived
