@@ -25,14 +25,14 @@ of files:
   name of the directory that constitutes the particular rule
   package. The format of this file is described in the next section.
 
-- *Tables*: These are files that contain tabular data that is specific
-  to the rule and that may be shared with other rule packages. Tables
-  are stored in CSV format. The file names **must be** in the format
-  <name>.table and correspond to an entry in the .package file.
+- *Table*: This is a file that contain tabular data that may be specific
+  to a single rule, or that may be used by two or more rule packages. A table
+  is stored in CSV format. The file name **must be** in the format
+  <name>.table, and must correspond to an entry in at least one .package file.
 
-- *Rules*: A series of map/reduce steps to be performed on a single
-  document. Rules are stored in the *XALGO expression language*. The
-  file names **must be** <name>.rule and correspond to an entry in the
+- *Rule*: This is a series of map/reduce steps to be performed on a single
+  document. A rule is stored in the *XALGO expression language*. The
+  file name **must be** <name>.rule, and must correspond to an entry in at least one the
   .package file.
 
 ## Package meta data format
