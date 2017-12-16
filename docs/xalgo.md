@@ -113,7 +113,7 @@ repository.
 Rules and tables have a **very particular** identification scheme used
 to provide a unique id for the component. This id *includes*
 information about the component so that some minor decisions can be
-made knowing only the id. The scheme breaks down as:
+made knowing only the id. The scheme is structured as follows:
 
 - [0]: The first character in the id denotes the type of entity. It
   can be either S, R or T (signifying System, Rule or Table)
