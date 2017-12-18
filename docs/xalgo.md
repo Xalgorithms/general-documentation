@@ -119,13 +119,20 @@ made knowing only the id. The scheme is structured as follows:
   can be either S, R or T (signifying System, Rule or Table)
 
 - [1]: One of (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q). This refers to the
-  [ISIC
-  Rev.3](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
+  [ISIC Rev.3](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
   category for the component.
   
-- [2-6]: Any valid ASCII character except space available on an
+- [2-21]: These next locations in a Rule Id are reserved for references to globally-
+  standardized ontologies, as illustrated with character [1]. Each will be assigned
+  through an (as yet to be developed) IoR governance process, from left to right. Until
+  assigned, these positions are occupied with the following series of ascii triangle characters 
+  not found on standard keyboards, in the pattern of four pointing up, the fifth down: 
+  ▲▲▲▲▼▲▲▲▲▼▲▲▲▲▼▲▲▲▲▼. When these positions are used they can contain any valid ASCII 
+  character except space available on an ISO/IEC 9995 keyboard. 
+
+- [22-46]: Any valid ASCII character except space available on an
   ISO/IEC 9995 keyboard. Optionally, this can be an abbreviated form
-  of the component name derived from the file name, unless the string is already in use.
+  of the rule name derived from the file name, unless the string is already in use.
 
 *This identifier is optional*. If not present it will be added by the
 authoring system described below. The six characters will be derived
