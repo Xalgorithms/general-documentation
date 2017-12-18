@@ -2,8 +2,8 @@
 
 Document processing in XADF occurs along a *pipeline* of jobs loosely
 connected via Kafka topics. Each Job in the pipeline performs a
-specific function (similar to a (cloud
-function)[https://en.wikipedia.org/wiki/Function_as_a_service]) and
+specific function - similar to a [cloud
+function](https://en.wikipedia.org/wiki/Function_as_a_service) - and
 submits the results of that function to a subsequent Kafka topic. The
 majority of these are implemented as Spark Jobs (therefore we commonly
 call all of them *jobs*), but there is no hard requirement that they
@@ -24,13 +24,13 @@ the participating parties in the envelope of the ingested document
 (refer to (documents)[./documents.md] for this structure). A party
 (one of "supplier", "customer", "payee", "buyer", "seller", "tax" or
 "any") must be elected for the *effectiveness* of the rule. These
-correspond to the (parties in
-UBL)[http://docs.oasis-open.org/ubl/csprd01-UBL-2.2/mod/summary/reports/UBL-Invoice-2.2.html]. The
+correspond to the [parties in
+UBL](http://docs.oasis-open.org/ubl/csprd01-UBL-2.2/mod/summary/reports/UBL-Invoice-2.2.html). The
 *any* selector indicates that the rule is effective if **any of the
 parties** fall within the rule's jurisdication.
 
-If effective dates and times are specified in the (rule
-package)[./xalgo.md], then the issued date and time in the document
+If effective dates and times are specified in the [rule
+package](./xalgo.md), then the issued date and time in the document
 **must fall within** this effective period.
 
 # Applicable rules
