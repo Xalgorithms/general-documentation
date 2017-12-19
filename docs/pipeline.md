@@ -21,7 +21,7 @@ primary Jobs are:
 A rule is *effective* if it matches the jurisdiction (country and
 region) specified by a document. The jurisdication will be drawn from
 the participating parties in the envelope of the ingested document
-(refer to (documents)[./documents.md] for this structure). A party
+(refer to [documents](./documents.md) for this structure). A party
 (one of "supplier", "customer", "payee", "buyer", "seller", "tax" or
 "any") must be elected for the *effectiveness* of the rule. These
 correspond to the [parties in
