@@ -123,7 +123,7 @@ made knowing only the id. The scheme is structured as follows:
   Rev.3](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
   category for the component.
   
-- [2-6]: Any valid ASCII character except space available on an
+- [2-40]: Any valid ASCII character except space available on an
   ISO/IEC 9995 keyboard. Optionally, this can be an abbreviated form
   of the component name derived from the file name, unless the string is already in use.
 
@@ -206,25 +206,26 @@ WHEN item:classification.code.value == '506505';
 # empty sales are not affected
 WHEN item:quantity.value > 0;
 
-# pseudo naming of tables (incomplete)
-# REQUIRE ca-qc:tables:gas_taxation:distances;
-# REQUIRE ca-qc:tables:gas_taxtions:reductions;
+REQUIRE TA_gas_qc_distances INDEX [EffectiveUserID] AS distances;
+REQUIRE TA_gas_qc_reductions INDEX [2R3(a)_Distance] AS reductions;
 
 # build a table of reductions that are relevant to the supplier in the invoice
 ASSEMBLE seller_reductions
-  COLUMN distance FROM distances WHEN envelope:parties.supplier.id.value == distances.EffectiveUserID
-  COLUMN reduction FROM reductions WHEN distances.distance <= reductions.2R3(a)_Distance;
-
-#FORMULA calculate_reduction(a, b, c) multiply(a, subtract(b, c)))
+  # table is implied by FROM + @
+  COLUMN distance FROM table:distances WHEN envelope:parties.supplier.id.value == @EffectiveUserID
+  # distance is automatically understood as the previously created distance column (it's a name in this scope)
+  COLUMN reduction FROM table:reductions WHEN distance <= @2R3a_Distance;
 
 # build a table derived from the items table in the invoice that
 # includes a price reduction calculation
-MAP items
- USING price_reduction = multiply(@quantity.value, subtract(@price.value, first(seller_reductions).reduction)));
+# what does items mean in this case
+# currently we are suggesting that there's a default table called items...
+MAP table:items
+ USING price_reduction = multiply(@quantity.value, subtract(@price.value, first(table:seller_reductions).reduction)));
 
 
 # indicate a revision of the document
-REVISE items
+REVISE table:items
  USING @price.value = subtract(@price.value, @price_reduction);
 ```
 
@@ -363,7 +364,9 @@ specifying the *precise* rule that they would like to execute.
 
 ## Telemetry
 
-To assist in debugging and development, all aspects of processing on the Fabric will be available to roles specified in a rule package. This will incude:
+To assist in debugging and development, all aspects of processing on
+the Fabric will be available to roles specified in a rule
+package. This will incude:
 
 - when and why a rule was marked as *effective* or *applicable*
 
@@ -374,45 +377,163 @@ To assist in debugging and development, all aspects of processing on the Fabric 
 
 # Syntax
 
-This section documents the syntac of the textual representation of the
-rule language. It is broken into sections that correspond to the
-*phases* of the rule's execution (see [pipline](./pipeline.md) for
-more details.
+A rule is a set of statements that include preconditions (or *whens*)
+and a series of steps to perform during the execution. This section
+documents the syntax of the textual representation of the rule
+language. It is broken into sections that correspond to the *phases*
+of the rule's execution (see [pipline](./pipeline.md) for more
+details).
+
+During rule execution, a single in-memory, *virtual* table is
+retained. For example, if a ``MAP`` is executed, the result of that
+``MAP`` is in this virtual table.
+
+## Common elements
+
+### Expressions
+
+The specifications of the statements below include some common
+expressions:
+
+- ``<name>``: a simple variable name (must be [a-zA-Z0-9_])
+
+- ``<key>``: a path of dot separated names denoting hierarchy within
+  data (aka JSON paths)
+
+- ``<value>``: an immediate value; either a string ('') or a number
+
+- ``<reference>``: a reference to some data in the execution context;
+  it should have the forms:
+
+  - ``<section>:<key>`` to refer to some preserved section in the
+    context
+
+  - ``@<key>`` to refer to something in the *current statement* (for
+    example the columns in a table during a MAP)
+    
+  - ``$`` to refer to the current *virtual table*
+
+- ``<operator>``: an operator symbol (see *operators*)
+
+- ``<compute_expression>``: a set of calls to formulae in a recursive
+  style (for example: ``multiply(add(a, b), subtract(c, d))``)
+
+- ``<table_reference>``: a reference to a specific table in the Fabric
+  using the rule_id format
+
+### Sections
+
+- ``envelope``: Refers to the envelope section of the ingested
+  document. This is **not** a table, so it cannot be use as a source
+  in ASSEMBLE, MAP or REDUCE. This section is *retained* after
+  execution.
+
+- ``item``: Refers to the table of items in the ingested
+  document. This section is *specifically named* and not in the table
+  section so that it may be used in WHEN statements. When working with
+  items in table-oriented statements (MAP, REDUCE), the reference
+  **must be** ``table:items``.
+  
+- ``table``: Refers to any of the *named tables* assembled during the
+  rule execution or preloaded before execution. The items in the
+  document are preloaded as ``table:items`` as are any table mentioned
+  with ``REQUIRE``. The ``table:items`` section is *retained* after
+  execution and will be used to generate a revision.
 
 ## Conditions of execution
 
-### Common elements
-
-- *section*:
-- *name*:
-- *key*:
-- *operator*:
-- *value*:
+Statements in this section all rule authors to specific conditions
+that will control whether or not the rule is executed given conditions
+in the ingested document.
 
 ### WHEN
 
-```WHEN <section>:<key> <operator> <value>;```
+```WHEN <reference> <operator> <value>;```
 
 The *WHEN* statement is used to specify the conditions that will
 indicate applicability of the rule to a document *or* an item in the
 body of the document. This information is used to indicate that
 documents would effectively not generate revisions of the document.
 
+This statement **must use** either the ``envelope`` or ``item``
+section in the context.
 
 ### REQUIRE
+
+```REQUIRE <table_reference> (INDEX [(<name>)+])? (AS <name>)?```
+
+Instructs the Fabric to preload a specific table from the Fabric
+*before* executing this rule. This statement may *optionally* include
+a list of columns to index. The table will be available in the
+execution context *table* section during rule execution. If the AS
+component is specified, then this will set the name of the table in
+the section; otherwise, the original table name in the reference will
+be used.
 
 ## Assembling in-memory tables
 
 ### ASSEMBLE
 
-```ASSEMBLE <name> (COLUMN <name> FROM <name> WHEN <reference> <operator> <reference>)+```
+```ASSEMBLE <name> (COLUMN <name> AS <name> FROM <reference> WHEN <reference> <operator> <reference>)+```
+```ASSEMBLE <name> (COLUMNS FROM <reference> WHEN <reference> <operator> <reference>)+```
+
+Rule authors will require dynamic, in-memory tables derived from
+preloaded, computed or document data. This statement controls the
+construction of such a table. The ``<name>`` element of the statement
+will be the final name of the table in the ``table`` section.
+
+Authors may specific *one or more* named columns to appear in the
+final table. These columns are derived from earlier references in the
+context that resolve to a table (therefore, the ``envelope`` section
+is excluded). By default, the name of the column in the assembled
+table is the *same as the column in the referenced table*, but the
+``AS`` expression may be used to change the name in the assembled
+table. If **all** columns from the source table are required, then use
+the ``COLUMNS`` alternate syntax.
+
+The ``WHEN`` expression is used to specific which rows from the source
+table are used. It is very similar to an SQL WHERE expression.
+
+### KEEP
+
+```KEEP <name>```
+
+At any time, the author may choose to preserve the current *virtual
+table* represented by ``$`` in the execution context. When this is
+done, the virtual table is retained until the next modifying statement
+but the state of the table at the time of the ``KEEP`` is available in
+``table:<name>``.
 
 ## Map/Reduce
 
 ### MAP
 
+```MAP <reference> (USING <name> = <compute_expression>)+```
+
+Where the ``ASSEMBLE`` statement is use to create new tables, this
+statement is used to transform them. Therefore, it is a sequence of
+one or more ``USING`` expressions that reference a
+``compute_expression``. The formulae in the expression are used to
+***add or replace*** columns to the table, linearly. If ``<name>`` is
+an existing column in the table, it will be replaced. The result of
+this statement is a new **virtual table**.
+
 ### REDUCE
+
+*Work in progress*
+
+### FORMULA
+
+This statement will be used to define rule-specific formulae. It is a
+*work in progress*.
 
 ## Revisions
 
 ### REVISE
+
+```REVISE <reference> (USING <name> = <compute_expression>)+```
+
+This statement is used to specify a *permanent change* to the
+``<reference>``. The section in the reference **must be** a section
+that is *retained after rule execution*. The form of this statement
+matches that of the ``MAP`` statement.
