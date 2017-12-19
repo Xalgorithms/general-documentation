@@ -36,7 +36,29 @@ package](./xalgo.md), then the issued date and time in the document
 # Applicable rules
 
 A rule is *applicable* if **all** of the *when conditions* pertaining
-to the *envelope* section specified in the rule are met.
+to the *envelope* section specified in the rule are met. If there are
+no items in the document which would match the *item when conditions*,
+then the rule is considering not applicable because it would result in
+an empty revision after the application of the rule.
+
+# Effective versus applicable
+
+On first glance, it seems as if *effective* and *applicable* are very
+similar and could possibly be expressed in a single manner. Therefore,
+we should consider why the two different ideas exist.
+
+The rules that are retained in the Fabric are each entries in a large
+ontology classified according to industry, jurisdication, time,
+etc. The *effectiveness* of a rule is a form of meta-organization
+within this ontology. Authors are able to use this classification to
+broadly partition documents that will be processed. Therefore,
+*effectiveness* is the classification of a rule.
+
+Each individual rule represents a very small *program* or
+*computation*. As part of the expression of this computation, we can
+indicate what types of data a rule will modify. Furthermore, we can
+base this indication on *values* within the document itself. This is
+the *applicability* of a rule.
 
 # Loading required tables
 
@@ -58,4 +80,31 @@ between phases. The simplest place to keep it is in Cassandra.
 
 # Execution of rules
 
+When all applicable rules have been discovered and all tables loaded,
+a rule will be executed. This will occur in a single Spark Job that
+applies all steps from the rule, generating a single revision
+resulting from the execution. It is critical that *each* rule
+execution lead to a single revision - this will eventually allow the
+systems to indicate to a user (or foreign system) *where* a value in
+the final revised document originated.
+
+All *steps* specified in the rule are run *in order*, with no
+exceptions. This means that a REVISE statement may occur in the
+*middle* of a rule's execution. This merely means that the values used
+in the revision come from the *execution context* that was valid *at
+that time*. The actual revision that is stored against the document is
+only generated as the accumulation of *all* REVISE statements *at the
+end of the execution* of the rule.
+
 ## Execution context
+
+When a rule is executing, there is a special collection of data that
+is called the *context*. This is an in-memory data stucture that
+preserves all of the data manipulation performed by the rule. It is
+divided into *sections* that provide a nominal form of scoping of
+data. Further details on how to reference these sections is explaining
+in the [xalgo](./xalgo.md) document. The existing sections are:
+
+- *envelope*: the envelope of the document being processed; read-only
+- *item*: the current item in the document; read-only
+- *tables*: tables that have temporarily been committed during the execution
