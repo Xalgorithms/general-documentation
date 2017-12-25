@@ -118,14 +118,8 @@ made knowing only the id. The scheme is structured as follows:
 - [0]: The first character in the id denotes the type of entity. It
   can be either S, R or T (signifying System, Rule or Table)
 
-- [1]: One of (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q). This refers to the
-  [ISIC
-  Rev.3](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=2)
-  category for the component.
-  
-- [2-40]: Any valid ASCII character except space available on an
-  ISO/IEC 9995 keyboard. Optionally, this can be an abbreviated form
-  of the component name derived from the file name, unless the string is already in use.
+- [1-23]: A monotonically increasing ordinal, left-padded with zeros
+  and stored as a string.
 
 *This identifier is optional*. If not present it will be added by the
 authoring system described below. The six characters will be derived
