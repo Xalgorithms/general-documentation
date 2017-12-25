@@ -49,8 +49,8 @@ Cassandra. This table has these columns:
 To determine applicable rules, we use two tables in Cassandra. The use
 of these tables is described in [processing pipeline](pipline.md).
 
-We have one table which records **all** sections and keys that are
-used by **all** rules (in *WHEN* statements) to specify
+We have one table which records **all** sections and keys that have
+been used in submitted rules (in *WHEN* statements) to specify
 applicability. The data in this table is used to prefilter envelope
 data from an ingested document. It has these columns:
 
