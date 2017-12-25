@@ -47,24 +47,32 @@ Cassandra. This table has these columns:
 ## Applicable rules
 
 To determine applicable rules, we use two tables in Cassandra. The use
-of these tables is described in the (processing pipeline)[pipline.md]
-document.
+of these tables is described in [processing pipeline](pipline.md).
 
-We have one table which records **all** of the envelope keys that
-**all rules** may use to determine whether a specific rule is
-applicable. The data in this table is used to prefilter envelope data
-from an ingested document. It has these columns:
+We have one table which records **all** sections and keys that are
+used by **all** rules (in *WHEN* statements) to specify
+applicability. The data in this table is used to prefilter envelope
+data from an ingested document. It has these columns:
 
-* *key*: A dotted-path key that references an envelope key in a
-  document envelope (eg. parties.seller.name, currency,
-  period.starts...)
+* *section*: The name of the document section that pertains to this
+  condition.
+
+* *key*: A dotted-path key that references a key in a section
+   (eg. parties.seller.name, currency, period.starts...)
   
-A second table will be used to record all *envelope* conditions that a
-rule should match:
+A second table will be used to record all conditions that a rule
+should match:
 
 * *rule_id*: A reference to the the rule as stored in ArangoDB
-* *key*: A dotted-path key that references an envelope key in a
-  document envelope
+
+* *section*: The name of the document section that pertains to this
+  condition.
+  
+* *key*: A dotted-path key that references a key in a section
+   (eg. parties.seller.name, currency, period.starts...)
+  
 * *operator*: An envelope filter operator (see syntax for *WHEN* in
-  (XALGO-2.0)[xalgo-2.0.md])
+  [XALGO-2.0](xalgo-2.0.md].
+
 * *value*: The required value for the *key* given the *operator*
+  (stored as a string)
