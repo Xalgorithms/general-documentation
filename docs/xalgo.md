@@ -410,7 +410,8 @@ expressions:
 - ``<operator>``: an operator symbol (see *operators*)
 
 - ``<compute_expression>``: a set of calls to formulae in a recursive
-  style (for example: ``multiply(add(a, b), subtract(c, d))``)
+  style (for example: ``multiply(add(a, b), subtract(c, d))``) or a
+  simple ``<reference>``
 
 - ``<table_reference>``: a reference to a specific table in the Fabric
   using the rule_id format
