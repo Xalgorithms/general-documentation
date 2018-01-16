@@ -9,17 +9,17 @@ The [XA Data Fabric](./arch-2.0.md) will use a heterogeneous data
 storage layer with multiple data storage services that offer optimal
 storage and query capabilities for particular contexts.
 
-For *persistence-optimized* storage, we will use
-[MongoDB](https://en.wikipedia.org/wiki/MongoDB). This allows use to
-store documents, tables and rules in a document-oriented format. This
-data model is *very close* to the format in which the data is
+For *persistence-optimized* storage, the system employs
+[MongoDB](https://en.wikipedia.org/wiki/MongoDB). This provides for 
+storage of documents, tables and rules in a document-oriented format. 
+Its data model is *very close* to the format in which the data is
 submitted to the system (discrete documents).
 
-For *query-optimized* storage, we will use [Cassandra](https://en.wikipedia.org/wiki/Apache_Cassandra). Generally,
-our queries originate from Spark Jobs that form the [core processing
+For *query-optimized* storage, the system employs [Cassandra](https://en.wikipedia.org/wiki/Apache_Cassandra). Generally,
+the queries originate from Spark jobs that form the [core processing
 pipline](./pipeline.md). Data that is originally submitted via the
-[Schedule
-service](https://github.com/Xalgorithms/xadf-schedule-service) and is
+[schedule
+service](https://github.com/Xalgorithms/xadf-schedule-service) and that is
 critical to the performance of the Spark jobs will be stored in one or
 more Cassandra tables. The Spark jobs will generally use data from
 these tables to perform computations; only fetching from Mongo when
