@@ -22,7 +22,7 @@ Thus we envision a scalable enhancement of "The Internet" to enable, in effect, 
 **An Internet of Rules is designed to solve the general class of problem in which agent A, interacting with agent B, would obtain one or more externally-managed computational rules from agents C..n, where:
 * A and B may or may not know about C..n's rules, or about any updates to them, but either or both would prefer to be notified about relevant rules when interacting.
 * C...n may or may not know about A and B in particular, nor about their particular medium of interaction, but can expect A or B or their medium of interaction to be capable of exchanging data with a generic medium common to A..n.
-* A and B would tolerate the risk of exposing limited data through the generic medium in order to learn of applicable rules from C..n.
+* A and B would tolerate the risk of exposing limited data through the generic medium in order to learn of applicable rules from C..n.**
 
 This is being created as a distributable, no-fee, table-structured reference catalogue of computational algorithms of any type. Each rule package in on the data fabric includes its authoritative uniform resource identifier, a table-oriented expression of the rule, its ongoing version history, and its terms of use. The registry contains just the information required for each individual rule to be invoked. Xalgorithms (“ex-algorithms”) refers to external extensible algorithms. 
 
