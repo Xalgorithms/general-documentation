@@ -5,9 +5,9 @@ tables. It also explains the mechanisms for matching rules against
 input documents. This is related to the (processing
 pipeline)[pipline.md].
 
-The [XA Data Fabric](./arch-2.0.md) will use a heterogeneous data
-storage layer with multiple data storage services that offer optimal
-storage and query capabilities for particular contexts.
+The [XA Data Fabric](./arch-2.0.md) implements a heterogeneous data
+storage services layer for optimized storage and query capabilities 
+across differing functional contexts.
 
 For *persistence-optimized* storage, the system employs
 [MongoDB](https://en.wikipedia.org/wiki/MongoDB). This provides for 
@@ -21,7 +21,7 @@ pipline](./pipeline.md). Data that is originally submitted via the
 [schedule
 service](https://github.com/Xalgorithms/xadf-schedule-service) and that is
 critical to the performance of the Spark jobs will be stored in one or
-more Cassandra tables. The Spark jobs will generally use data from
+more [CQL](https://cassandra.apache.org/doc/latest/cql/) tables. The Spark jobs will generally use data from
 these tables to perform computations; only fetching from Mongo when
 detailed information about a document, table or rule is required.
 
@@ -53,7 +53,7 @@ queries that will be needed to satisfy the Spark Jobs in the data
 processing pipeline. Currently, these Jobs are:
 
 1. Determining which rules are valid and effective in the
-   jurisdication of a document. These are called the *effective*
+   jurisdiction of a document. These are called the *effective*
    rules.
    
 1. Filtering the effective rules based on envelope data in the
