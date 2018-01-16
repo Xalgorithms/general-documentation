@@ -13,12 +13,18 @@ README: XALGORITHMS REGISTRY & LICHEN COMPONENT
     TROUBLESHOOTING
     FIRST AUTHORS
 
-
 WHAT IS THIS PROJECT?
 
-Participants in Xalgorithms Alliance are creating a registry that is somewhat like DNS for rules, with a distributed component that is somewhat like a browser for rules. We envision a fully-scalable enhancement of "The Internet" to enable, in effect, an Internet of Rules. [Main Website](https://www.xalgorithms.org/)
+Participants in Xalgorithms Alliance have created a specification, a platform-agnostic component, and a compute method so that any computational algorithms can be readily transmitted from any independent source repositories within which they are maintained, to any applications that would use them. 
 
-The Xalgorithms Federated Registry of Rules is being created as a distributable, no-fee, table-structured reference catalogue of computational algorithms of any type. Each rule package in the registry includes its authoritative uniform resource identifier, a table-oriented expression of the rule, its ongoing version history, and its terms of use. The registry contains just the information required for each individual rule to be invoked. Xalgorithms (“ex-algorithms”) refers to external extensible algorithms. 
+Thus we envision a scalable enhancement of "The Internet" to enable, in effect, an Internet of Rules. [Main Website](https://www.xalgorithms.org/)
+
+_An Internet of Rules is designed to solve the general class of problem in which agent A, interacting with agent B, would obtain one or more externally-managed computational rules from agents C..n, where:
+* A and B may or may not know about C..n's rules, or about any updates to them, but either or both would prefer to be notified about relevant rules when interacting.
+* C...n may or may not know about A and B in particular, nor about their particular medium of interaction, but can expect A or B or their medium of interaction to be capable of exchanging data with a generic medium common to A..n.
+* A and B would tolerate the risk of exposing limited data through the generic medium in order to learn of applicable rules from C..n._
+
+This is being created as a distributable, no-fee, table-structured reference catalogue of computational algorithms of any type. Each rule package in on the data fabric includes its authoritative uniform resource identifier, a table-oriented expression of the rule, its ongoing version history, and its terms of use. The registry contains just the information required for each individual rule to be invoked. Xalgorithms (“ex-algorithms”) refers to external extensible algorithms. 
 
 The Lichen class of components will be for installation adjacent to or semi-embedded into any application with a suitable API that requires automated access to external rules. Lichen is named after the diverse and colorful family of symbiotic living things that attach to the surfaces of other objects, without interfering in their internal functions or integrity. See: [How a Buyer or Seller Would Use Lichen:](https://github.com/Xalgorithms/xa-arch/wiki/How-a-Buyer-or-Seller-Would-Use-Lichen)
 
