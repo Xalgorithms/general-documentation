@@ -8,11 +8,14 @@ Foundation fall into three high-level categories:
   categories includes web and mobile applications that interact with
   Lichen document services.
   
+- XAlgo: A high-level declarative language for specifying rules that
+  operate on hierarchical documents (JSON-like).
+
 - XADF: The XA Data Fabric - A compute service that performs rule
-  discovery and execution for hierarchical documents (JSON).
+  discovery and execution for using the XAlgo specification.
   
-- Authoring: A Jupyter-based authoring interface for tables and rules
-  used by the XADF.
+- XalgoAuthor: A Jupyter-based authoring interface for tables and
+  rules used by the XADF.
   
 # Active Projects
 
