@@ -147,10 +147,6 @@ Business aspects of Xalgorithms are managed on [an instance of OpenProject](http
 
 [Request an Account](https://worksite.xalgorithms.org/account/register)
 
-# Contributing
-
-Refer to [contributing documentation](./contributing.md).
-
 # Origins
 
 The initial business concept and general systems design of the
@@ -185,12 +181,13 @@ https://www.xalgorithms.org/about-us/membership/)
 
 # Development Team
 
-The current technical team is led by [Don
+The [current technical team](./contributing/process.md) is led by [Don
 Kelly](http://github.com/karfai) and Bill Olders, also with
 requirements specification led by Joseph Potvin. Developers Hayk
 Pilosyan (full time) and Sr. Systems Developer Tigran Sargsyan (part
-time) are creating the production-class system. The early
-proof-of-concept implementation in 2015 and 2016 was mainly done by
-Don Kelly with input from Patrick Naubert, Simon Deziel, Michael
-Richardson and Samir Hussain.
+time) are creating the production-class system.
+
+The early proof-of-concept implementation in 2015 and 2016 was mainly
+done by Don Kelly with input from Patrick Naubert, Simon Deziel,
+Michael Richardson and Samir Hussain.
 
