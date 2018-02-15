@@ -1,4 +1,4 @@
-# WHAT IS THIS PROJECT?
+# What is this project?
 
 Participants in Xalgorithms Alliance have created a specification, a
 platform-agnostic component, and a compute method so that any
@@ -50,7 +50,7 @@ patterns according to user-defined constraints, and
 disclosure-controlled multi-scale data generation for real-time or
 trend analytics.
 
-# INTELLECTUAL RIGHTS & LICENSING
+# Intellectual Rights & Licensing
 
 Xalgorithms Alliance aligns with both the demand-side perspective of
 The Free Software Definition (i.e. user freedoms), and the supply-side
@@ -97,7 +97,9 @@ streams from the outset:
   distributed under the unified GNU General Public License (GPL)
   version 3.0, or a more recent version of it.
 
-# HOW TO CONTRIBUTE (SOURCE CODE, SYSTEMS MANAGEMENT)
+# How to Contribute
+
+## Developers
 
 For collaboration the Xalgorithms team regularly uses:
 
@@ -126,7 +128,7 @@ Participating under an implied contract shall always be assumed as
 carrying the same terms as the XALGORITHMS ALLIANCE ACCESSION
 AGREEMENT.
 
-# HOW TO CONTRIBUTE (BUSINESS MANAGEMENT, GOVERNANCE)
+## Business Management & Governance
 
 Participation in business management and governance of Xalgorithms
 Alliance is structured through an explict contract with Xalgorithms
@@ -134,46 +136,22 @@ Foundation, namely the [XALGORITHMS ALLIANCE ACCESSION
 AGREEMENT](https://www.xalgorithms.org/about-us/membership/)
 Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorporated in Canada. The sole purpose of the Foundation is to provide management and governance services to the Xalgorithms Alliance. And Xalgorithms Alliance exists as an unincorporated association of members committed to fostering a free/libre/open Internet of Rules to advance the fairness and efficiency of commerce.  
 
-# HOW TO CONTRIBUTE (FINANCIALLY)
+## Financial
 
 Xalgorithms Foundation offers [five categories of membership in
 Xalgorithms Alliance](https://xalgorithms.org/participate/)
 
-# PROJECT MANAGEMENT
+# Project Management
 
 Business aspects of Xalgorithms are managed on [an instance of OpenProject](https://worksite.xalgorithms.org)
 
 [Request an Account](https://worksite.xalgorithms.org/account/register)
 
-# CODING STANDARDS
+# Contributing
 
-[Under revision...]
+Refer to [contributing documentation](./contributing.md).
 
-Representational State Transfer (REST) Architectural Style 
-http://www.restapitutorial.com/
-https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
-
-ADAPTIVE Communication Environment (ACE) is a free/libre/open-source
-object-oriented framework for concurrent systems:
-http://www.cs.wustl.edu/~schmidt/ACE-overview.html
-
-Software Package Data Exchange (SPDX) is a standard format for
-communicating the components, licenses and copyrights associated with
-a software package: https://spdx.org/about-spdx
-
-# HOW TO BUILD
-
-[Under development...]
-
-# HOW TO INSTALL
-
-[Under development...]
-
-# TROUBLESHOOTING
-
-[Under development...]
-
-# ORIGINS 
+# Origins
 
 The initial business concept and general systems design of the
 Xalgorithms Registry and the Lichen Component were jointly conceived
@@ -205,7 +183,7 @@ DataKinetics, in the form of a 5-year [Tier 3 Membership](Membership
 structure is describe in detail at:
 https://www.xalgorithms.org/about-us/membership/)
 
-# DEVELOPMENT TEAM
+# Development Team
 
 The current technical team is led by [Don
 Kelly](http://github.com/karfai) and Bill Olders, also with
