@@ -1,7 +1,7 @@
 # Summary
 
 As documented in detail elsewhere, the projects managed by the
-Foundation fall into three high-level categories:
+Foundation fall into four high-level categories:
 
 - Lichen: A UBL document processing system that sends business
   documents to the XADF for rule discovery and execution. This
