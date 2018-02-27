@@ -131,7 +131,7 @@ retained** in the document database in the storage section.
 
 ## Respond
 
-The [Respond service](https://github.com/Xalgorithms/xadf-schedule)
+The [Respond service](https://github.com/Xalgorithms/xadf-respond)
 offers a WebSocket and REST endpoint that can be used by integrations
 to *observe the completion* of jobs scheduled in the kernal.
 
