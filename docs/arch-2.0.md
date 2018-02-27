@@ -92,7 +92,7 @@ deployment turn-around time.
 
 ## Compute
 
-![Network of Jobs](jobs.network.svg)
+![Network of Jobs](job.network.svg)
 
 The computing kernel of the Fabric is designed as a *network of topics
 and jobs*. Every computational *task* is broken into a number of steps
