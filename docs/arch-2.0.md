@@ -78,7 +78,7 @@ distributed database. The primary source of truth in the system
 derives from the at-rest domain data (rules, tables, documents) that
 is stored in the document database. The distributed database
 (Cassandra) is used to provide runtime data to the Compute jobs. For
-detailed information, refer to the [data storage](./data-storage.md)
+detailed information, refer to the [data storage](./data.storage.md)
 document.
 
 By design, Storage will be deployed and managed *independently* of the
