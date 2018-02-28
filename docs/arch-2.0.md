@@ -129,11 +129,13 @@ automatically scheduled for asynchronous computation in the kernel. A
 document that is accepted by this service will be **permanently
 retained** in the document database in the storage section.
 
-## Respond
+## Events
 
-The [Respond service](https://github.com/Xalgorithms/xadf-respond)
+The [Events](https://github.com/Xalgorithms/xadf-events) service
 offers a WebSocket and REST endpoint that can be used by integrations
-to *observe the completion* of jobs scheduled in the kernal.
+to *observe the completion* of jobs scheduled in the kernal. For now,
+these are the only events sent from the service. In the future, more
+events may be added.
 
 ## Query
 
