@@ -2,8 +2,8 @@
 
 This document explains the internal data storage of rules and
 tables. It also explains the mechanisms for matching rules against
-input documents. This is related to the (processing
-pipeline)[pipline.md].
+input documents. This is related to the [processing
+pipeline](pipline.md).
 
 The [XA Data Fabric](./arch-2.0.md) implements a heterogeneous data
 storage services layer for optimized storage and query capabilities 
