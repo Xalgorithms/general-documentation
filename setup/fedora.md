@@ -191,13 +191,3 @@ Instructions for writing a rule and rule syntax can be found [here](https://gith
 This section will be updated as common installation problems are reported.
 
 If a new problem is found when compiling or running rules, please check the existing issues for the compler ([link](https://github.com/Xalgorithms/lib-rules-int-scala)) and interpreter ([link](https://github.com/Xalgorithms/lib-rules-parse-ruby)). If the new problem is unique, please create a new issue within the relevant repository.
-
-<!--![Image.]({{ site.url }}/assets/opinion.gif){: .center-image}-->
-
-<br />
-
-Thanks for reading,
-
-<img src="{{ site.url }}/assets/art/s.png" alt="RCF" style="border-radius:0; width: 289px;"/>
-
-
