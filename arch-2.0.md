@@ -9,7 +9,8 @@ influenced by concepts from
 and
 [CQRS](https://en.wikipedia.org/wiki/Command–query_separation). The
 primary framework for the platform is
-[SMACK](mesosphere.com/blog/smack-stack-new-lamp-stack/).
+[SMACK](mesosphere.com/blog/smack-stack-new-lamp-stack/) with Mesos
+replaced with Kubernetes.
 
 # Terminology
 
@@ -161,12 +162,10 @@ rules and tables.
 
 # Deployment
 
-Following the SMACK concepts, the entire Fabric is deployed to Apache
-Mesos. The Spark and Cassandra components are directly-managed using
-the corresponding packages from the Mesos distribution. The public API
-services are managed as
-[Docker](https://en.wikipedia.org/wiki/Docker_(software)) containers
-under Marathon.
+Following the SMACK concepts, the entire Fabric is deployed to Google
+Cloud Platform running as one or more Kubernetes clusters. Spark
+executive control is managed using Kubernetes native drivers; all
+other services are managed as Kubernetes Pods.
 
 # Integrations
 
