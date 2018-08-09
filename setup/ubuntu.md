@@ -1,10 +1,10 @@
-# Development Environment Setup on Fedora 28
+# Development Environment Setup on Ubuntu 18 
 
-This document contains steps for installing the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on **Fedora 28**. A similar process could be applied on most GNU/Linux distributions or within the Windows Subsystem for Linux. Current interpreter builds (July 2018) use JSON representations of tables, rules, package information and documents. Refer to the [project documentation](https://github.com/xalgorithms/general-documentation) and [interlibr overview](https://github.com/Xalgorithms/interlibr) for more information about the current implementation.
+This document contains steps for installing the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on **Ubuntu 18.04.1 LTS**. A similar process could be applied on most GNU/Linux distributions or within the Windows Subsystem for Linux. Current interpreter builds (July 2018) use JSON representations of tables, rules, package information and documents. Refer to the [project documentation](https://github.com/xalgorithms/general-documentation) and [interlibr overview](https://github.com/Xalgorithms/interlibr) for more information about the current implementation.
 
 ## Installation
 
-How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on Fedora 28.:
+How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on Ubuntu 18.:
 1. Clone repositories.
 2. Install dependencies.
 3. Test and contribute.
@@ -35,53 +35,15 @@ git clone https://github.com/Xalgorithms/lib-rules-parse-ruby.git
 
 ### Install SBT
 
-A version of SBT *is* available in the Fedora package manager, but we are going to use the official SBT repositories to download and install the latest stable SBT.
+*To-do*
 
-First, install the prerequisite **OpenJDK**:
-```sh
-sudo dnf install java-1.8.0-openjdk-devel
-```
 
-Second, using the guide on the [SBT download page](https://www.scala-sbt.org/download.html), install **SBT**:
-```sh
-curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
-sudo mv bintray-sbt-rpm.repo /etc/yum.repos.d/
-sudo dnf install sbt
-```
-At this point, `cd` to the `lib-rules-int-scala` repository and run `sbt test` to check if everything is working correctly. SBT will download everything it needs to compile and run the project by itself. It will take roughly five minutes for everything to download, compile, install, and return `[success]`. 
 
 ### Install RBENV
 
-Many of the following instructions are from the [Fedora Developer Documentation.](https://developer.fedoraproject.org/start/sw/web-app/rails.html)
+*To-do*
 
-Install all dependencies for Ruby and RBENV:
-```sh
-sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
-```
 
-Execute the following commands to install **RBENV**:
-```sh
-cd
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-exec $SHELL
-
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-exec $SHELL
-```
-
-After rbenv has been installed, install **Ruby 2.4.2**, followed by **bundler** (via Ruby's `gem` package manager.)
-```sh
-rbenv install 2.4.2
-gem install bundler
-```
-
-Having successfully installed Ruby 2.4.2 and bundler, the remainder of the process will be automated with bundler. Running bundler in the `lib-rules-parse-ruby` directory will install all other dependencies automatically.
-```sh
-bundle install
-```
 
 ### Test the Rule Compiler
 
