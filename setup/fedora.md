@@ -78,7 +78,7 @@ rbenv install 2.4.2
 gem install bundler
 ```
 
-Having successfully installed Ruby 2.4.2 and bundler, the remainder of the process will be automated with bundler. Running bundler in the `lib-rules-parse-ruby` directory will install all other dependencies automatically.
+Having successfully installed Ruby 2.4.2 and bundler, the remainder of the process will be automated with bundler. Running bundler in *both* the `lib-rules-parse-ruby` and `lib-rules-int-scala` directories will install all other dependencies automatically.
 ```sh
 bundle install
 ```

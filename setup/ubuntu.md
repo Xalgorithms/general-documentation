@@ -24,7 +24,7 @@ How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compi
 
 ### Clone Repositories 
 
-It is recommended to clone the following repositories to the same folder in your home directory. For instructions on how to install and use git, please refer to [this tutorial](https://guides.github.com/introduction/git-handbook/). `sudo dnf install git` will install and prepare git for basic cloning.
+It is recommended to clone the following repositories to the same folder in your home directory. For instructions on how to install and use git, please refer to [this tutorial](https://guides.github.com/introduction/git-handbook/). `sudo apt install git` will install and prepare git for basic cloning.
 
 ```bash
 mkdir Xalgo
@@ -35,14 +35,49 @@ git clone https://github.com/Xalgorithms/lib-rules-parse-ruby.git
 
 ### Install SBT
 
-*To-do*
+First install all SBT prerequisites with apt:
+```bash
+sudo apt install openjdk-8-jdk
+```
 
-
+Second, using the guide on the [SBT download page](https://www.scala-sbt.org/download.html), install SBT:
+```bash
+sudo echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+sudo apt-get update
+sudo apt-get install sbt
+```
+At this point, `cd` to the `lib-rules-int-scala` repository and run `sbt test` to check if everything is working correctly. SBT will download everything it needs to compile and run the project by itself. It will take roughly five minutes for everything to download, compile, install, and return `[success]`. 
 
 ### Install RBENV
 
-*To-do*
+Install RBENV denpendencies with apt:
+```bash
+sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev
+```
 
+Clone the rbenv repo (not as root,) into `~/.rbenv` and set up RBENV:
+```bash
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+```
+
+Clone the ruby-build repository into your rbenv plugins:
+```bash
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+```
+
+After rbenv has been installed, install Ruby 2.4.2, followed by bundler (via Ruby's `gem` package manager.)
+```sh
+rbenv install 2.4.2
+gem install bundler
+```
+
+Having successfully installed Ruby 2.4.2 and bundler, the remainder of the process will be automated with bundler. Running bundler in *both* the `lib-rules-parse-ruby` and `lib-rules-int-scala` directories will install all other dependencies automatically.
+```sh
+bundle install
+```
 
 
 ### Test the Rule Compiler
