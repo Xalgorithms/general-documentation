@@ -32,6 +32,10 @@ track work. The *departing* and *scheduled* columns in the boad track the
 current and next releases. The *preflight* column tracks things that will be
 implemented sometime in the future but not necessarily in the next release.
 
+*Experimental*: When work starts on a release, a milestone should be added to
+each of the issues in the column for the release. Any additional tasks that are
+created while working on the releases should be added to the milestone.
+
 ## Deployment
 
 When a release is fully tested and the team is confident in the changes, the new
