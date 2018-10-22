@@ -74,7 +74,8 @@ them to remember what is in the branch.
 
 The collective prescribes a minimal, formal commit format:
 
-```Simple, short description of the change
+```
+Simple, short description of the change
 
 <issue reference>
 
