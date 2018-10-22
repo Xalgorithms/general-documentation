@@ -13,7 +13,7 @@ overall solution and some are less coupled.
 To foster the goal of a loosely-coupled solution, each subproject is
 maintained in a distinct repository with an independant version. The
 [Interlibr](https://github.com/Xalgorithms/interlibr) meta-project is
-the some of these subprojects with additional configuration and
+the sum of these subprojects with additional configuration and
 tooling that is *specifically* tailored for the solution.
 
 # Organization of subprojects
