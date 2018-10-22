@@ -21,6 +21,11 @@ planning in tandem: the current release and the next release are planned
 together so that incomplete features can be rolled into the next release. Once a
 release is completed, a new *next release* will be generated.
 
+*Features* in the Interlibr project are intended to be *cross-project*,
+complete, improvements to the entire solution. The relevant changes *within* a
+subproject are called *tasks*. In the [change protocol](./changes.md), we
+provide more details.
+
 The team uses
 [waffle.io](https://waffle.io/Xalgorithms/xadf-active-repositories) to plan and
 track work. The *departing* and *scheduled* columns in the boad track the
