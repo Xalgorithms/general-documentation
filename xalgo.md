@@ -1,17 +1,16 @@
 # Summary
 
-This document explains the format of rules in XALGO 0.2.0. It includes
-the textual representation of the rule as well as the prescribed
-layout of rules as stored in Git repositories. Included with this
-explanation is a high-level explanation of rule storage in the XADF.
+This document explains the format of rules in XALGO 0.2.0. It includes the
+textual representation of the rule as well as the prescribed layout of rules as
+stored in Git repositories. Included with this explanation is a high-level
+explanation of rule storage in Interlibr.
 
 # Components of Rule Packages
 
 ## Packaging
 
-Rules operate on *JSON documents*. For the initial release of the
-XADF, these documents are refined JSON representations of UBL
-documents.
+Rules operate on *JSON documents*. For the initial release of Interlibr, these
+documents are refined JSON representations of UBL documents.
 
 Rules are packaged and distributed using Git repositories. The
 repository must follow a specific layout with specific naming
@@ -246,24 +245,23 @@ Generally, the statements in an XALGO rule fall into specific categories:
 
 # Storage
 
-The full content of rules and tables are stored in the XADF document
-database. Information related to rule matching and inference is stored
-in Cassandra. Further details about this and the matching logic are
-available in [data storage](data.storage.md).
+The full content of rules and tables are stored in the Interlibr document
+database (Mongo). Information related to rule matching and inference is stored
+in Cassandra. Further details about this and the matching logic are available in
+[data storage](data.storage.md).
 
 # Authoring with Jupyter
 
 ## Structure
 
 Rules and tables (as rule packages) are edited in [Jupyter
-notebooks](http://jupyter.org/) alongside informational documentation
-about the rule package. A single Jupyter notebook represents an entire
-rule package. To support this relationship, we will add kernels and UI
-to the core Jupyter project and host an instance of the system
-alongside the XADF. This will be built on
-(JupyterHub)[https://jupyterhub.readthedocs.io/en/latest/]. Notebooks
-created in this instance will be persisted to GitHub repositories as
-rule packages (described above).
+notebooks](http://jupyter.org/) alongside informational documentation about the
+rule package. A single Jupyter notebook represents an entire rule package. To
+support this relationship, we will add kernels and UI to the core Jupyter
+project and host an instance of the system alongside Interlibr. This will be
+built on (JupyterHub)[https://jupyterhub.readthedocs.io/en/latest/]. Notebooks
+created in this instance will be persisted to GitHub repositories as rule
+packages (described above).
 
 When creating a notebook using the project's instance of JupyterHub,
 the notebook will be required to contain a reference to a GitHub
@@ -331,13 +329,12 @@ processed using the latest versions of the rules.
 
 ## Sandboxes
 
-If a user would like to test their rules, the XADF will provide a
-*sandbox environment* on the Fabric. This will allow the user to run
-their rules against simple input documents. To isolate the changes
-that the user is testing in their sandbox, GitHub branches will be
-used. When the user is happy with their changes, they will be able to
-merge the sandbox into the master branch of the GitHub repository **as
-a new version**.
+If a user would like to test their rules, Interlibr will provide a *sandbox
+environment* on the Fabric. This will allow the user to run their rules against
+simple input documents. To isolate the changes that the user is testing in their
+sandbox, GitHub branches will be used. When the user is happy with their
+changes, they will be able to merge the sandbox into the master branch of the
+GitHub repository **as a new version**.
 
 An author's *default sandbox* branch can always be deployed to the
 Fabric for testing in this manner. The sandbox on the Fabric will

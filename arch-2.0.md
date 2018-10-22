@@ -1,16 +1,15 @@
 # Summary
 
-This document describes the fundamental architecture of the **XA Data
-Fabric** platform (XADF). The primary role of the platform is to
-discover, refine and execute rules in order to revise documents. It is
-a [cloud-native](https://www.cncf.io/about/faq/) application heavily
-influenced by concepts from
-[serverless](https://github.com/cncf/wg-serverless/tree/master/whitepaper)
-and
-[CQRS](https://en.wikipedia.org/wiki/Command–query_separation). The
-primary framework for the platform is
-[SMACK](mesosphere.com/blog/smack-stack-new-lamp-stack/) with Mesos
-replaced with Kubernetes.
+This document describes the fundamental architecture of the Interlibr
+platform. The primary role of the platform is to discover, refine and execute
+rules in order to revise documents. It is a
+[cloud-native](https://www.cncf.io/about/faq/) application heavily influenced by
+concepts from
+[serverless](https://github.com/cncf/wg-serverless/tree/master/whitepaper) and
+[CQRS](https://en.wikipedia.org/wiki/Command–query_separation). The primary
+framework for the platform is
+[SMACK](mesosphere.com/blog/smack-stack-new-lamp-stack/) with Mesos replaced
+with Kubernetes.
 
 # Terminology
 
@@ -123,29 +122,26 @@ from the system. Services in this section will also provide
 
 ## Schedule
 
-The [Schedule service](https://github.com/Xalgorithms/xadf-schedule)
-is the primart starting point for any integration with the
-Fabric. Documents are submitted to this service and they are
-automatically scheduled for asynchronous computation in the kernel. A
-document that is accepted by this service will be **permanently
-retained** in the document database in the storage section.
+The [Schedule](https://github.com/Xalgorithms/service-il-schedule) service is
+the primart starting point for any integration with the Fabric. Documents are
+submitted to this service and they are automatically scheduled for asynchronous
+computation in the kernel. A document that is accepted by this service will be
+**permanently retained** in the document database in the storage section.
 
 ## Events
 
-The [Events](https://github.com/Xalgorithms/xadf-events) service
-offers a WebSocket and REST endpoint that can be used by integrations
-to *observe the completion* of jobs scheduled in the kernal. For now,
-these are the only events sent from the service. In the future, more
-events may be added.
+The [Events](https://github.com/Xalgorithms/service-il-events) service offers a
+WebSocket and REST endpoint that can be used by integrations to *observe the
+completion* of jobs scheduled in the kernal. For now, these are the only events
+sent from the service. In the future, more events may be added.
 
 ## Query
 
-[This service](https://github.com/Xalgorithms/xadf-query) offers a
-simple API for integrations to query historical information *related
-to documents or revisions* that is retained in the document
-database. It **does not provide access** to the distrubuted
-database. For example, if a document has a number of revisions, an
-integration may request an older revision to be applied to the
+[This service](https://github.com/Xalgorithms/service-il-query) offers a simple
+API for integrations to query historical information *related to documents or
+revisions* that is retained in the document database. It **does not provide
+access** to the distrubuted database. For example, if a document has a number of
+revisions, an integration may request an older revision to be applied to the
 document or it may request the revision itself.
 
 Additionally, this service will provide access to compute metadata to
@@ -154,11 +150,11 @@ particular **completed** computation in the kernel.
 
 ## Revisions
 
-The [Revisions service](https://github.com/Xalgorithms/xadf-revisions)
-is an *integration service*. It **does not** offer a public API. The
-[primary responsability](./xalgo.md#authoring-and-publishing) of this
-service is to receive web hook calls from GitHub and store updated
-rules and tables.
+The [Revisions
+service](https://github.com/Xalgorithms/service-il-revisions-github) is an
+*integration service*. It **does not** offer a public API. The [primary
+responsability](./xalgo.md#authoring-and-publishing) of this service is to
+receive web hook calls from GitHub and store updated rules and tables.
 
 # Deployment
 
