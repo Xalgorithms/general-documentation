@@ -6,7 +6,7 @@ because there are a number of different interpretations of the term "rule
 system". In this document, we outline the major categories of *rule systems* and
 compare the Interlibr and Xalgo implementations with those categories.
 
-# On Terminology
+# Terminology
 
 Often we will use specific terms that **may not** met common understanding of
 those terms. In this section, we define those terms:
@@ -149,6 +149,6 @@ tedious and repetitive code from the platform itself, replacing it with
 generalized operations that can be specifically instantiated for particular
 data.
 
-# On Categorizing Interlibr and Xalgo
+# Categorizing Interlibr and Xalgo
 
 
