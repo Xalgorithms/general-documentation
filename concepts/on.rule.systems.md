@@ -37,16 +37,26 @@ prohibts this category from performing *inference* based on the activation of a
 particular rule; there being no information preserved from which to draw
 inference.
 
-[examples]
+An example rule might be:
 
-[exemplars]
+```
+WHEN light_switch_is_toggled IF switch_is_up THEN signal_light(false)
+WHEN light_switch_is_toggled IF switch_is_down THEN signal_light(true)
+```
+
+In this example, for a theoretical IoT light control system, one event arrives
+into the system: `light_switch_is_toggled`. The switch might be up or
+down. Depending on the position, the `signal_light` action is triggered with the
+correct new state for the light.
 
 ## Inference / Classification
 
 This is a common pattern in *expert systems* and it is often referred to as a
 *production rule system*. A *body of knowledge* is built up using a database of
 predicates that partially categorize information submitted to the system. Often,
-systems of this category follow the RETE algorithm [more detail].
+systems of this category follow the
+[RETE](https://en.wikipedia.org/wiki/Rete_algorithm) pattern-matching algorithm
+to build a network of related inferences.
 
 There are two common variants of this category of rule system: pure inference
 and action-by-inference (ABI). Pure inference systems merely classify or answer
@@ -63,9 +73,38 @@ what should we do now?* ABI systems receive *documents* (some information - a
 *noun*) and classify it in order to answer the question: *What is this and what
 should we do with it?*
 
-[examples]
+A simple example of inference rules would be:
 
-[exemplars: RIF standardizes]
+```
+parent("Bob", "Bill")
+parent("Mary", "Bill")
+parent("John", "Mary")
+
+ancestor(X, Y) = parent(X, Y)
+ancestor(X, Y) = parent(X, P) AND ancestor(P, Y)
+
+ancestor?("John", "Bill")
+```
+
+This example sets up a basic set of *atomic facts*: *Mary* and *Bob* are parents
+of *Bill*, *John* is a parent of *Mary*. Someone (`X`) is an ancestor of someone
+else (`Y`) if they are a parent of that person **or* if they are a parent of
+some third person (`P`) who is also an ancestor of `Y`. This allows us to ask a
+question: Is *John* an ancestor of *Bill*?
+
+This is the most common type of rule system. It has been popularized in the
+semantic web domain by standards like [Rule Interchange Format
+(RIF)](https://en.wikipedia.org/wiki/Rule_Interchange_Format) and the broader
+community associated with [RuleML](https://en.wikipedia.org/wiki/RuleML). It has
+long been in use with deductive databases and associated language like
+[Datalog](https://en.wikipedia.org/wiki/Datalog). Many business rule
+([BRMS](https://en.wikipedia.org/wiki/Business_rule_management_system)) systems
+like [Drools](https://en.wikipedia.org/wiki/Drools) include inference rule
+systems with declarative languages (often mixed with some workflow elements).
+
+In many of these exemplar implementations, the inference engine and rules
+submitted to it are often coupled with elements of the other categories in this
+document.
 
 ## Workflow
 
@@ -78,11 +117,21 @@ declarative *workflow language*.
 The purpose of this category of system is to factor the domain *out* of the
 processing platform. This places responsibility for the correct construction of
 complex domain-specific rules in the hands of the (presumed) more capable domain
-experts rather than platform developers.
+experts rather than platform developers. The critical identifying feature of a
+workflow rules system is that it **does not** make inferences. Rather, any
+formal language associated with the system encodes **how** a procedure will be
+carried out (essentially, a recipe).
 
-[examples, ansible is one]
-
-[exemplars]
+Workflow systems are many and varied. They often appear as an informal feature
+of a larger software platform or are integrated directly into other
+software. For most developers, they will encounter workflow rules systems as
+part of a configuration management system (Kubernetes configuration; Ansible,
+Chef deployment scripts, etc) or a packakge management system (Debian or RPM
+software packaging, for example). Product owners may encounter the category as
+part of business process management system ([Apache
+ODE](https://en.wikipedia.org/wiki/Apache_ODE) is one example using
+[WS-BPEL](https://en.wikipedia.org/wiki/Business_Process_Execution_Language) to
+specify the rules).
 
 ## Transformative
 
@@ -99,10 +148,6 @@ components. This is because the purpose of this sort of system is to remove
 tedious and repetitive code from the platform itself, replacing it with
 generalized operations that can be specifically instantiated for particular
 data.
-
-[examples, XSLT is one]
-
-[exemplars]
 
 # On Categorizing Interlibr and Xalgo
 
