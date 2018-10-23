@@ -88,7 +88,7 @@ ancestor?("John", "Bill")
 
 This example sets up a basic set of *atomic facts*: *Mary* and *Bob* are parents
 of *Bill*, *John* is a parent of *Mary*. Someone (`X`) is an ancestor of someone
-else (`Y`) if they are a parent of that person **or* if they are a parent of
+else (`Y`) if they are a parent of that person **or** if they are a parent of
 some third person (`P`) who is also an ancestor of `Y`. This allows us to ask a
 question: Is *John* an ancestor of *Bill*?
 
