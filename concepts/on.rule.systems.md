@@ -33,7 +33,7 @@ specific action should be taken.
 
 Pure implementations of this class of rule system are *stateless* with no
 accumulation of information between invocations of a rule. This effective
-prohibts this category from performing *inference* based on the activation of a
+prohibits this category from performing *inference* based on the activation of a
 particular rule; there being no information preserved from which to draw
 inference.
 
@@ -60,9 +60,9 @@ to build a network of related inferences.
 
 There are two common variants of this category of rule system: pure inference
 and action-by-inference (ABI). Pure inference systems merely classify or answer
-inqueries about the information sumbitted. ABI implementations add an additional
+inquiries about the information submitted. ABI implementations add an additional
 processing step that may trigger an action based on the categorization of the
-sumbmitted information.
+submitted information.
 
 Action-by-inference systems are superficially similar to ECA systems but can be
 differentiated if we examine the semantics surrounding the information that is
@@ -215,7 +215,7 @@ qualities of an *inference* system.
 Applicability, on the other hand, *does* match the qualities of an *inference*
 system. Within
 [Xalgo](https://github.com/Xalgorithms/general-documentation/blob/master/xalgo.md),
-applicability is expressed as a series of boolean expessions based on key and
+applicability is expressed as a series of boolean expressions based on key and
 values from the *execution context* (as `WHEN` statements). This could be very
 effectively represented in a system like Datalog or Drools. The **reason this
 has not been done** is that we wanted to retain a symmetry of syntax with Xalgo
@@ -244,7 +244,7 @@ evaluation point matches the type of the provided element, then evaluation
 continues. Otherwise, evaluation fails.
 
 **Conclusion**: The syntax (a JSON configuration) submitted with the document to
-be processed represents a rudiamentary form of a *transformative* rule
+be processed represents a rudimentary form of a *transformative* rule
 system. It is *merely* a one-to-one mapping, so its' usefulness outside of this
 very narrow context is non-existent.
 
@@ -271,7 +271,7 @@ it represents a complex transformative rule system. This thought is borne out
 when we examine *how* we expect submitters to use the revisions emitted by the
 system (see next section).
 
-Even though Xalgo is likely a transformative rules syste, it is not useful to
+Even though Xalgo is likely a transformative rules system, it is not useful to
 reason about it in this manner. When we consider it as such, we impose the
 concept that **it is Xalgo** that is **changing** the submitted documents. This
 is something that should **never** be assumed. The role of Xalgo is to provide
