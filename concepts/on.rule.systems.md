@@ -6,7 +6,7 @@ because there are a number of different interpretations of the term "rule
 system". In this document, we outline the major categories of *rule systems* and
 compare the Interlibr and Xalgo implementations with those categories.
 
-# Terminology
+## Terminology
 
 Often we will use specific terms that **may not** met common understanding of
 those terms. In this section, we define those terms:
@@ -20,9 +20,9 @@ those terms. In this section, we define those terms:
   software platform. This may be user activity, internal platform behaviours,
   etc.
 
-# Categories of Rule Systems
+## Categories of Rule Systems
 
-## Event / Condition / Action (ECA)
+### Event / Condition / Action (ECA)
 
 This category of *rule system* often appears in event-processing platforms (IoT
 platforms, for example). The *rules* in this category are usually simple
@@ -49,7 +49,7 @@ into the system: `light_switch_is_toggled`. The switch might be up or
 down. Depending on the position, the `signal_light` action is triggered with the
 correct new state for the light.
 
-## Inference / Classification
+### Inference / Classification
 
 This is a common pattern in *expert systems* and it is often referred to as a
 *production rule system*. A *body of knowledge* is built up using a database of
@@ -106,7 +106,7 @@ In many of these exemplar implementations, the inference engine and rules
 submitted to it are often coupled with elements of the other categories in this
 document.
 
-## Workflow
+### Workflow
 
 Often, a rule system must process *documents* according to a prescribed
 procedure or recipe. Some of these steps may require user intervention and
@@ -126,14 +126,14 @@ Workflow systems are many and varied. They often appear as an informal feature
 of a larger software platform or are integrated directly into other
 software. For most developers, they will encounter workflow rules systems as
 part of a configuration management system (Kubernetes configuration; Ansible,
-Chef deployment scripts, etc) or a packakge management system (Debian or RPM
+Chef deployment scripts, etc) or a package management system (Debian or RPM
 software packaging, for example). Product owners may encounter the category as
 part of business process management system ([Apache
 ODE](https://en.wikipedia.org/wiki/Apache_ODE) is one example using
 [WS-BPEL](https://en.wikipedia.org/wiki/Business_Process_Execution_Language) to
 specify the rules).
 
-## Transformative
+### Transformative
 
 In many cases, information in a solution may need to be *transformed* from one
 representation (or context) to another. For example, from XML to JSON. Rules can
