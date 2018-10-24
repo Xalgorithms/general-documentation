@@ -167,6 +167,23 @@ for Interlibr is:
    expressed as *Xalgo tables*
 1. emit *revisions* to the original document as a key/value set
 
+## Architectural Structure
+
+The design of the [processing
+pipeline](https://github.com/Xalgorithms/general-documentation/blob/master/pipeline.md)
+is heavily inspired by the design of ECA rule systems. It endeavours to be a
+series of stateless stages applied to inputs that are received in a fashion
+*similar* to (but not the same as) events. Therefore, it may superficially appear to represent an ECA *rule system*.
+
+Similarly, the progressive refinement of the document data bears a resemblance
+to the staged architecture of a workflow *rules system*. Again, this is because
+of the shared architectural pattern and nothing more.
+
+**Conclusion**: The processing pipeline of Interlibr follows a **very common
+distributed architecture pattern** that is also used in ECA and workflow
+systems. Semantic resemblance is misleading in this case, the processing
+pipeline is not intended to be either of these categories.
+
 ## Classification of Effective and Applicable
 
 The operations performed in this stage of the pipeline bear a superficial
@@ -227,11 +244,41 @@ evaluation point matches the type of the provided element, then evaluation
 continues. Otherwise, evaluation fails.
 
 **Conclusion**: The syntax (a JSON configuration) submitted with the document to
-be processed represents a _very rudiamentary_ form of a *transformative* rule
+be processed represents a rudiamentary form of a *transformative* rule
 system. It is *merely* a one-to-one mapping, so its' usefulness outside of this
 very narrow context is non-existent.
 
 ## Executing the rules
+
+The Xalgo *rule language* (or DSL) is inspired by concepts from table-based
+programming. Specifically from [decision
+tables](https://en.wikipedia.org/wiki/Decision_table) and [control
+tables](https://en.wikipedia.org/wiki/Control_table). Rule authors can use Xalgo
+to express a series of [map, reduce and
+filter](https://en.wikipedia.org/wiki/MapReduce) expressions that modify tabular
+data derived from a submitted document using data from supplementary
+tables. Effectively, this is a form of [relational
+algebra](https://en.wikipedia.org/wiki/Relational_algebra).
+
+Because of the vocabulary used to express these concepts (especially "decision")
+it may seem that there is some sort of inference rules system represented in
+Xalgo. This is not the case. The Xalgo language is merely a *transformative
+algebra*. It does not "decide" anything in particular. It reaches no final
+single "conclusion".
+
+Due to the *transformative* nature of the Xalgo language, it is most likely that
+it represents a complex transformative rule system. This thought is borne out
+when we examine *how* we expect submitters to use the revisions emitted by the
+system (see next section).
+
+Even though Xalgo is likely a transformative rules syste, it is not useful to
+reason about it in this manner. When we consider it as such, we impose the
+concept that **it is Xalgo** that is **changing** the submitted documents. This
+is something that should **never** be assumed. The role of Xalgo is to provide
+potential revisions, **not** to act on those revisions.
+
+**Conclusion**: Xalgo likely represents a transformative rules system but
+considering it as such is not useful and may be detrimental.
 
 ## Emitting revisions
 
