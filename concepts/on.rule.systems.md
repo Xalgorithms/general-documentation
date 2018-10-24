@@ -151,4 +151,94 @@ data.
 
 # Categorizing Interlibr and Xalgo
 
+To understand how (or if) Interlibr and Xalgo fit into this categorization a
+brief review of what the platform does is required. If we examine each of the
+operational steps in the process, we can understand how the platform relates to
+these categories. The simplified [execution
+pipeline](https://github.com/Xalgorithms/general-documentation/blob/master/pipeline.md)
+for Interlibr is:
 
+1. accept *hierarchical documents* expressed as JSON
+1. match *rules* to those documents according to two specific categories
+   (*effective* and *applicable*)
+1. construct an execution context based on submitted documents
+1. execute a series of map/reduce/filter operations expressed in *Xalgo rules*
+   on those tables with supplementary information from supporting tables
+   expressed as *Xalgo tables*
+1. emit *revisions* to the original document as a key/value set
+
+## Classification of Effective and Applicable
+
+The operations performed in this stage of the pipeline bear a superficial
+resemblance to the operations performed by an *inference rule system*. There are
+several criteria that determine each of these classifications. All of these
+criteria *could be* written as predicates in Datalog or Drools. On closer
+examination, it is easy to see that we would only ever ask two questions:
+`effective?` or `applicable?`. Since we have only these questions, then the set
+of *facts* that we need to register within the rule system will be *very
+finite*.
+
+There are two ways to establish these facts:
+
+* *effective*: The effectiveness of a rule is determined by matching key/value
+  pairs submitted with the document against a corresponding set of values keyed
+  against rule ids (and stored in Cassandra).
+
+* *applicable*: Applicability is merely the system determining whether or not a
+  rule will generate revisions of a submitted document. The applicability of a
+  rule is expressed as part of the rule itself *in Xalgo*. This was a design
+  choice to make rule implementation easier for rule authors (by allowing them
+  to see these criteria in the same file as the rule that are writing).
+
+From these descriptions, we can easily see that since *effectiveness* is
+determine by a simple relational algebra expression between two key/value sets,
+it does not match any of the categories above. Certainly, it does not match the
+qualities of an *inference* system.
+
+Applicability, on the other hand, *does* match the qualities of an *inference*
+system. Within
+[Xalgo](https://github.com/Xalgorithms/general-documentation/blob/master/xalgo.md),
+applicability is expressed as a series of boolean expessions based on key and
+values from the *execution context* (as `WHEN` statements). This could be very
+effectively represented in a system like Datalog or Drools. The **reason this
+has not been done** is that we wanted to retain a symmetry of syntax with Xalgo
+(for reasons mentioned above). At the time the language was designed, it was
+simpler to implement a *boolean expression evaluator* rather than implement or
+(more likely) integrate a complex inference engine that offered **far more
+capabilities** that was required. We developed a fit-for-purpose method of
+representing the boolean expressions in Cassandra tables, allowing evaluation of
+the expressions using a relational method similar to that used for
+effectiveness.
+
+_Conclusion_: There is a boolean evaluator in one part of this stage of the
+pipeline that loosely matches an *inference* system. Using an _actual_ inference
+engine for this component would not introduce a value that is proportional to
+the difficultly of implementing or integrating one.
+
+## Constructing an initial context
+
+Since the Xalgo interpreter performs map/reduce/filter operations using document
+and table structures, we need a [mechanism to extract those
+structures](https://github.com/Xalgorithms/interlibr/issues/46). This is a
+simple key/value map submitted with the document. Internally, when a rule is
+evaluated, the Interlibr rule interpreter determines the *type* (document or
+table) of the referenced elements in the context. If the expected type of the
+evaluation point matches the type of the provided element, then evaluation
+continues. Otherwise, evaluation fails.
+
+_Conclusion_: The syntax (a JSON configuration) submitted with the document to
+be processed represents a _very rudiamentary_ form of a *transformative* rule
+system. It is *merely* a one-to-one mapping, so its' usefulness outside of this
+very narrow context is non-existent.
+
+## Executing the rules
+
+## Emitting revisions
+
+Interlibr emits revisions as a series (officially: an event log) of key/value
+pairs. The key in a revision *represents* a reference into the originally
+submitted document. Submitters can use these revisions to modify the document
+*however they see fit*. Interlibr imposes no structure in this case, it merely
+*informs*.
+
+_Conclusion_: This bears no resemblance to any category of rules system.
