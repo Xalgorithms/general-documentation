@@ -210,7 +210,7 @@ representing the boolean expressions in Cassandra tables, allowing evaluation of
 the expressions using a relational method similar to that used for
 effectiveness.
 
-_Conclusion_: There is a boolean evaluator in one part of this stage of the
+**Conclusion**: There is a boolean evaluator in one part of this stage of the
 pipeline that loosely matches an *inference* system. Using an _actual_ inference
 engine for this component would not introduce a value that is proportional to
 the difficultly of implementing or integrating one.
@@ -226,7 +226,7 @@ table) of the referenced elements in the context. If the expected type of the
 evaluation point matches the type of the provided element, then evaluation
 continues. Otherwise, evaluation fails.
 
-_Conclusion_: The syntax (a JSON configuration) submitted with the document to
+**Conclusion**: The syntax (a JSON configuration) submitted with the document to
 be processed represents a _very rudiamentary_ form of a *transformative* rule
 system. It is *merely* a one-to-one mapping, so its' usefulness outside of this
 very narrow context is non-existent.
@@ -241,4 +241,4 @@ submitted document. Submitters can use these revisions to modify the document
 *however they see fit*. Interlibr imposes no structure in this case, it merely
 *informs*.
 
-_Conclusion_: This bears no resemblance to any category of rules system.
+**Conclusion**: This bears no resemblance to any category of rules system.
