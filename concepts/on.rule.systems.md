@@ -289,3 +289,45 @@ submitted document. Submitters can use these revisions to modify the document
 *informs*.
 
 **Conclusion**: This bears no resemblance to any category of rules system.
+
+# What is Interlibr? Xalgo?
+
+The previous section indicates that Interlibr is structurally resembles rules
+systems from the categories outlined previously but operates using different
+mechanics.
+
+If it's *similar* to these rule systems, but is not precisely one of them, then
+what is it? To answer this question, we need to compare the *structure* of these
+systems, not the *mechanics*.
+
+Interlibr is a data processing pipeline that is applicable to any problem domain
+where the fundamental algorithms (which Interlibr calls *rules*) can be
+represented as map/reduce/filter operations and where data can be represented as
+*sets of tuples* (which Interlibr calls *tables*). To restrict the algorithmic
+capabilities of these *rules* to **only** map/reduce/filter operations, Xalgo
+exists as a *domain-specific language*.
+
+Once we start to think about Interlibr as a pipeline, we can more clearly see
+how it relates to the rule system categories. Both ECA and transformative rule
+systems are also architected using data processing pipelines. The pipelines in
+these architectures *typically* allow separating the mechanics of operating the
+pipeline from the data processing that occurs in the pipeline. This abstraction
+is usually called a *rule*. The role of a rule in an ECA or in a transformative
+pipeline is **exactly the same** as the role of a *rule* in Interlibr.
+
+Now that we know that these systems are *all* data processing pipelines, we can
+compare them equally.
+
+Additional integration on top of Interlibr would be required to create either
+of these types of systems. In the case of an ECA system, an additional layer
+would need to be created to translate *events* into *documents* and *revisions*
+into *actions*. This is similar for a transformative system. In fact, the
+[Lichen](https://github.com/Xalgorithms/lichen) application that is built on
+Interlibr is an example of a transformative system that transforms UBL
+documents.
+
+Based on these conclusions, Interlibr is a platform for building *rules system
+solutions* that follow a data pipeline architecture. It is the common building
+block required to build an ECA or transformative rules system.
+
+
