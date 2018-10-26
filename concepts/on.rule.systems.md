@@ -315,8 +315,16 @@ pipeline from the data processing that occurs in the pipeline. This abstraction
 is usually called a *rule*. The role of a rule in an ECA or in a transformative
 pipeline is **exactly the same** as the role of a *rule* in Interlibr.
 
-Now that we know that these systems are *all* data processing pipelines, we can
-compare them equally.
+Conversely, inference and workflow rule systems are not structured as data
+pipelines. Usually, these types of systems are built on graph structures. Data
+is submitted to the system and resolution of the rules follows the relationships
+established by the graph structure. In inference systems, this structure allows
+a recursive combination of facts that eventually classify the input data. In
+workflow systems, the graph is used to represent steps in a process with
+transitions along the edges as actions in a procedure.
+
+Now that we know which of these systems are data processing pipelines and which
+are not, we can compare them equally.
 
 Additional integration on top of Interlibr would be required to create either
 of these types of systems. In the case of an ECA system, an additional layer
