@@ -40,7 +40,7 @@ Github issues associated with the relevant project.
 ## Planning board
 
 The collective uses a [waffle planning
-board](https://waffle.io/Xalgorithms/xadf-active-repositories) for task
+board](https://waffle.io/Xalgorithms/interlibr) for task
 management. A peculiar set of stages is used in the board:
 
 *Preflight*: These are *features* that the team plans to do someday. When

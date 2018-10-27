@@ -27,7 +27,7 @@ subproject are called *tasks*. In the [change protocol](./changes.md), we
 provide more details.
 
 The team uses
-[waffle.io](https://waffle.io/Xalgorithms/xadf-active-repositories) to plan and
+[waffle.io](https://waffle.io/Xalgorithms/interlibr) to plan and
 track work. The *departing* and *scheduled* columns in the boad track the
 current and next releases. The *preflight* column tracks things that will be
 implemented sometime in the future but not necessarily in the next release.
