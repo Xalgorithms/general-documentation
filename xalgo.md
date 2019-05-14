@@ -20,7 +20,7 @@ of files:
 
 - *Package*: This is a single file that contains metainformation about
   the package including rule versions, effective dates and
-  jurisdications. It **must be** named <ns>.package where <ns> is the
+  jurisdictions. It **must be** named <ns>.package where <ns> is the
   name of the directory that constitutes the particular rule
   package. The format of this file is described in the next section.
 
@@ -138,14 +138,14 @@ of this period, the rule **will not** be applied to documents. These
 times are expressed in **local time** with an attached time zone
 (using a common abbreviation or the [IANA tz
 database](https://www.iana.org/time-zones) specifier). Since a
-juridiction may include *multiple* time zones, this field allows
+jurisdiction may include *multiple* time zones, this field allows
 specifying multiple effective dates.
 
-### Jurisdication
+### Jurisdiction
 
 The *jurisdiction* of a component is specified with a combination of
 ISO-3166-1 and ISO-3166-2 codes. Both fields are optional. To make the
-rule **apply globally**, the jurisdication key should be omitted from
+rule **apply globally**, the jurisdiction key should be omitted from
 the meta information.
 
 ### Criticality
@@ -225,7 +225,7 @@ REVISE table:items
 Generally, the statements in an XALGO rule fall into specific categories:
 
 - *refining the applicability of the rule*: The effectiveness and
-  jurisdication of a rule are high-level constructs used to broadly
+  jurisdiction of a rule are high-level constructs used to broadly
   reduce the rule search space. Using *WHEN* statements *inside* the
   specification of the rule, an author can more specifically tune the
   applicability. These can apply to the *envelope* of a document or
@@ -283,9 +283,9 @@ Any user of the XA Authoring environment based on JupyterHub will be
 automatically allocated a *sandbox* for editing the notebook, tables
 and rules. This environment will be preserved as a specially named
 *branch* in GitHub. As the author makes changes to the package or its
-contents, changes will be *comitted* to their sandbox branch. The
+contents, changes will be *committed* to their sandbox branch. The
 package on such a branch can be deployed to a *sandbox* within the
-Fabric (see Execution) with the same name as the author's snadbox
+Fabric (see Execution) with the same name as the author's sandbox
 branch. When they want to *publish* these changes to the *official*
 version of the package, the branch will be *merged* into the *master*
 branch of the repo and a new version tag (this is the version of the
@@ -357,7 +357,7 @@ specifying the *precise* rule that they would like to execute.
 
 To assist in debugging and development, all aspects of processing on
 the Fabric will be available to roles specified in a rule
-package. This will incude:
+package. This will include:
 
 - when and why a rule was marked as *effective* or *applicable*
 
@@ -372,7 +372,7 @@ A rule is a set of statements that include preconditions (or *whens*)
 and a series of steps to perform during the execution. This section
 documents the syntax of the textual representation of the rule
 language. It is broken into sections that correspond to the *phases*
-of the rule's execution (see [pipline](./pipeline.md) for more
+of the rule's execution (see [pipeline](./pipeline.md) for more
 details).
 
 During rule execution, a single in-memory, *virtual* table is
@@ -454,7 +454,7 @@ section in the context.
 
 ```REQUIRE <table_reference> (INDEX [(<name>)+])? (AS <name>)?```
 
-Instructs the Fabric to preload a specific table from the Fabric
+Instructs the Fabric to pre-load a specific table from the Fabric
 *before* executing this rule. This statement may *optionally* include
 a list of columns to index. The table will be available in the
 execution context *table* section during rule execution. If the AS
