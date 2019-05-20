@@ -8,8 +8,7 @@ concepts from
 [serverless](https://github.com/cncf/wg-serverless/tree/master/whitepaper) and
 [CQRS](https://en.wikipedia.org/wiki/Command–query_separation). The primary
 framework for the platform is
-[SMACK](mesosphere.com/blog/smack-stack-new-lamp-stack/) with Mesos replaced
-with Kubernetes.
+[KnACK Stack](Well, you've hear of SMACK mesosphere.com/blog/smack-stack-new-lamp-stack/ But we eliminated the need to run Spark, and we replaced Mesos with Kubernetes. KnACK = Kubernetes nodes, Akka, Cassandra, Kafka )
 
 # Terminology
 
@@ -67,7 +66,7 @@ There are are three distinct sections to the architecture of the platform:
   currently based on Mongo and Cassandra.
   
 * *Compute*: This is the core kernel of the platform where rules are
-  discovered and applied to documents. It is a *network of Spark jobs*
+  discovered and applied to documents. It is a *network of runtime jobs*
   orchestrated via Kafka.
 
 ## Storage
@@ -101,13 +100,11 @@ completes, the results of the job are posted to a topic. Subsequent
 jobs listen to these topics and continue the computation as data
 becomes available.
 
-In practise, the network is formed from Kafka topics and and Spark
-jobs that use the Spark Streaming API.
+In practise, the network is formed from Kafka topics and active jobs.
 
-This design allows arbitrary computations to be composed from
-component parts implemented in Spark. The network of topics that
-orchestrates the stream of data between the jobs can be arranged to
-form new logical structures.
+This design allows arbitrary computations to be composed from ad hoc
+parts. The network of topics that orchestrates the stream of data 
+between the jobs can be arranged to form new logical structures.
 
 Currently, the only orchestration that is implemented in the kernal is
 that described by the [Lichen specific pipeline](./pipeline.md).
@@ -158,10 +155,10 @@ receive web hook calls from GitHub and store updated rules and tables.
 
 # Deployment
 
-Following the SMACK concepts, the entire Fabric is deployed to Google
-Cloud Platform running as one or more Kubernetes clusters. Spark
-executive control is managed using Kubernetes native drivers; all
-other services are managed as Kubernetes Pods.
+Following our KnACK Stack concepts, the entire Fabric is deployed to Google
+Cloud Platform running as one or more Kubernetes clusters. Overall 
+control is managed using Kubernetes native drivers; all other services
+are managed as Kubernetes Pods.
 
 # Integrations
 
