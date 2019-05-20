@@ -1,3 +1,6 @@
+---
+title: On Rule Systems
+---
 # On the Nature of Rule Systems
 
 The functionality of the Interlibr platform is often - in this documentation -

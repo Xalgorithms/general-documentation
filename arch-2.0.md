@@ -53,7 +53,7 @@ An application that uses the data Fabric.
 
 # Architecture
 
-![Architecture](xa.data.fabric.svg)
+![Architecture](/arch-2.0/xa.data.fabric.svg)
 
 There are are three distinct sections to the architecture of the platform:
 
@@ -92,7 +92,7 @@ deployment turn-around time.
 
 ## Compute
 
-![Network of Jobs](job.network.svg)
+![Network of Jobs](/arch-2.0/job.network.svg)
 
 The computing kernel of the Fabric is designed as a *network of topics
 and jobs*. Every computational *task* is broken into a number of steps
@@ -165,7 +165,7 @@ other services are managed as Kubernetes Pods.
 
 # Integrations
 
-![Integrations](xa.integrations.svg)
+![Integrations](/arch-2.0/xa.integrations.svg)
 
 An *integration* is a distinct application that, in some way,
 communicates data to and from the Fabric via the public API
