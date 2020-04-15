@@ -5,9 +5,9 @@ This document contains steps for installing the [interlibr](https://github.com/X
 ## Installation
 
 How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on Ubuntu 18.:
-1. Clone repositories.
-2. Install dependencies.
-3. Test and contribute.
+[1. Clone repositories.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#clone-repositories)
+[2. Install dependencies.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#install-dependencies)
+[3. Test and contribute.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#test-and-contribute)
 
 **Project Repositories:**
 - `lib-rules-int-scala`, the rule interpreter. [View on GitHub.](https://github.com/Xalgorithms/lib-rules-int-scala)
@@ -22,7 +22,7 @@ How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compi
 - Dependencies for Ruby.
 - Ruby packages to support the compiler.
 
-### Clone Repositories 
+## Clone Repositories 
 
 It is recommended to clone the following repositories to the same folder in your home directory. For instructions on how to install and use git, please refer to [this tutorial](https://guides.github.com/introduction/git-handbook/). `sudo apt install git` will install and prepare git for basic cloning.
 
@@ -33,6 +33,8 @@ git clone https://github.com/Xalgorithms/lib-rules-int-scala.git
 git clone https://github.com/Xalgorithms/lib-rules-parse-ruby.git
 ```
 
+
+## Install Dependencies
 ### Install SBT
 
 First install all SBT prerequisites with apt:
@@ -68,18 +70,19 @@ Clone the ruby-build repository into your rbenv plugins:
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ```
 
-After rbenv has been installed, install Ruby 2.4.2, followed by bundler (via Ruby's `gem` package manager.)
+After rbenv has been installed, install Ruby 2.7.0, followed by bundler (via Ruby's `gem` package manager.)
 ```sh
-rbenv install 2.4.2
+rbenv install 2.7.0
 gem install bundler
 ```
 
-Having successfully installed Ruby 2.4.2 and bundler, the remainder of the process will be automated with bundler. Running bundler in *both* the `lib-rules-parse-ruby` and `lib-rules-int-scala` directories will install all other dependencies automatically.
+Having successfully installed Ruby 2.7.0 and bundler, the remainder of the process will be automated with bundler. Running bundler in *both* the `lib-rules-parse-ruby` and `lib-rules-int-scala` directories will install all other dependencies automatically.
 ```sh
 bundle install
 ```
 
 
+## Test and Contribute
 ### Test the Rule Compiler
 
 As per the guide [here](https://github.com/xalgorithms/lib-rules-parse-ruby), a smoke test can be run to confirm the correct version of Ruby has been installed, and the compiler can run correctly: 
