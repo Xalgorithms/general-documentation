@@ -5,9 +5,9 @@ This document contains steps for installing the [interlibr](https://github.com/X
 ## Installation
 
 How to configure the [interlibr](https://github.com/Xalgorithms/interlibr) compiler and interpreter on Ubuntu 18.:
-[1. Clone repositories.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#clone-repositories)
-[2. Install dependencies.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#install-dependencies)
-[3. Test and contribute.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#test-and-contribute)
+1. [Clone repositories.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#clone-repositories)
+2. [Install dependencies.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#install-dependencies)
+3. [Test and contribute.](https://github.com/Xalgorithms/general-documentation/blob/master/setup/ubuntu.md#test-and-contribute)
 
 **Project Repositories:**
 - `lib-rules-int-scala`, the rule interpreter. [View on GitHub.](https://github.com/Xalgorithms/lib-rules-int-scala)
